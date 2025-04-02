@@ -1,0 +1,99 @@
+/* Container to position the button in the top-right corner */
+.google-login-container {
+  position: absolute;
+  top: 10px; /* Adjust the distance from the top */
+  right: 10px; /* Adjust the distance from the right */
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+/* Optional: Style the Google Login button to make it smaller */
+.google-login-container button {
+  transform: scale(0.8); /* Scale down the button size */
+  transform-origin: top right; /* Keep the button aligned to the top-right */
+}
+
+/* Container for the profile picture and dropdown */
+.profile-container {
+  position: relative; /* Position relative to allow dropdown positioning */
+  display: inline-block;
+}
+
+/* Style for the dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px); /* Position below with some spacing */
+  right: 0;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1100;
+  min-width: 160px;
+  padding: 8px 0;
+  display: block;
+}
+
+
+/* Style for the logout button */
+.dropdown-item {
+  padding: 8px 16px;
+  color: #333;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+}
+
+/* Style for the profile button */
+.btn-primary.rounded-circle {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.btn-primary.rounded-circle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary.rounded-circle:active {
+  transform: translateY(0);
+}
+
+/* Style for the profile initial */
+.profile-initial {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  user-select: none;
+}
+
+/* Style for the profile placeholder */
+.profile-placeholder {
+  width: 40px; /* Set the width of the placeholder box */
+  height: 40px; /* Set the height of the placeholder box */
+  border-radius: 50%; /* Make the box circular */
+  background-color: #e9ecef;
+  color: #6c757d;
+  display: flex; /* Center the text inside the box */
+  align-items: center; /* Center the text vertically */
+  justify-content: center; /* Center the text horizontally */
+  font-size: 14px; /* Set the font size */
+  font-style: italic; /* Make the text italic */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide the dropdown toggle caret */
+.dropdown-toggle::after {
+  display: none !important;
+}
