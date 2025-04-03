@@ -90,14 +90,6 @@ else
     exit 1
 fi
 
-# Install and configure SSL
-echo "Installing Certbot for SSL..."
-sudo apt install -y certbot python3-certbot-nginx
-
-# Get SSL certificates
-echo "Obtaining SSL certificates..."
-sudo certbot --nginx -d ${SERVER_IP} --non-interactive --agree-tos --email admin@${SERVER_IP}
-
 echo "✅ Nginx configuration completed!"
 echo "Frontend URL: http://${SERVER_IP}"
 echo "Backend URL: http://${SERVER_IP}/api" 
