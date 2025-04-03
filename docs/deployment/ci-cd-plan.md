@@ -1,5 +1,7 @@
 # 🚀 CI/CD Pipeline for Next.js + Python Project (GitHub + AWS)
 
+✅ 🚧 ❌
+
 This guide helps you set up a **CI/CD pipeline** for a project that uses **Next.js for frontend** and **Python for backend**, hosted on **AWS EC2 servers**, with code managed in **GitHub**.
 
 ---
@@ -15,36 +17,66 @@ This guide helps you set up a **CI/CD pipeline** for a project that uses **Next.
 | **Infra Automation**   | (optional) Terraform / Ansible |
 | **Environment Separation** | Git branches (main, dev) | 
 
-## 📁 Project Root Directory
-basis
+## 📁 About Basis Branching 
+- ✅ **Root directory:** basis
+- ✅ **GitHub repo:** basis (path: https://github.com/MohitShukla/basis).
+- ✅ branches:
+  - `main`: main production branch
+  - `dev`: development branch
 
----
 
-## 📂 Step 1: GitHub Repository Setup
-
-1. ✅ Create a repo on GitHub.
-2. ❌ Push your local code:
-   ```bash
-   git init
-   git remote add origin https://github.com/your-username/your-repo.git
-   git add .
-   git commit -m "Initial commit"
-   git push -u origin main
-   ```
-❌❌❌ `git push origin main` giving error. push was rejected because the repository's rules detected secrets in your commit. Specifically, a Google OAuth Client ID and Google OAuth Client Secret were found in the file auth/frontend/app/google_oauth.json at lines 2 and 7.
-
-3. Create a dev branch:
-   ```bash
-   git checkout -b dev
-   git push -u origin dev
-   ```
-
----
 
 ## Step 3: Set Up AWS Servers
 Provision two EC2 instances or ECS services:
-- `test-server:` for the dev branch
-- `prod-server:` for the main branch
+- ✅ `test-server` - for the dev branch. Public IPv4 address: 13.61.2.96
+- ✅ `prod-server` - for the main branch. Public IPv4 address: 16.171.2.238
+
+✅ SSH commands for dev and prod servers
+```bash
+ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-dev-key.pem" ubuntu@13.61.2.96
+ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-prod1-key.pem" ubuntu@16.171.2.238
+```
+
+## Test Server Details
+  Name: basis-dev
+  AMI: Ubuntu Server 22.04 LTS
+  Instance type: t3.micro (free tier)
+  Key pair: basis-dev-key.pem
+  Network settings: 
+    - VPC: Create new
+    - Subnet: Create new
+    - Security group: Create new
+      - Allow SSH (22)
+      - Allow HTTP (80)
+      - Allow HTTPS (443)
+      - Allow Custom TCP (3000) for Next.js
+      - Allow Custom TCP (8000) for Python backend
+
+
+## Install the necessary software on the basis server
+````bash
+# Update system
+sudo apt update && sudo apt upgrade -y
+
+# Install Node.js
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# Install PM2 globally
+sudo npm install -g pm2
+
+# Install Python and pip
+sudo apt install -y python3-pip python3-venv
+
+# Install nginx
+sudo apt install -y nginx
+
+# Install MongoDB
+wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+sudo apt update
+sudo apt install -y mongodb-org ````
+
 
 You can:
 
