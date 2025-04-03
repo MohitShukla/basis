@@ -65,60 +65,12 @@ git clone https://github.com/MohitShukla/basis.git
 
 
 
-### Nginx Configuration
-
-#### Frontend Configuration
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-
-    location / {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-```
-
-#### Backend Configuration
-```nginx
-server {
-    listen 80;
-    server_name api.your-domain.com;
-
-    location / {
-        proxy_pass http://localhost:8000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-```
-
-### SSL Setup
-```bash
-# Install Certbot
-sudo apt install -y certbot python3-certbot-nginx
-
-# Get SSL certificates
-sudo certbot --nginx -d your-domain.com -d api.your-domain.com
-```
 
 ## Monitoring
 
 ### CloudWatch Agent Setup
 ```bash
-# Install CloudWatch agent
-sudo apt install -y amazon-cloudwatch-agent
 
-# Configure CloudWatch
-sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
 ```
 
 ## Backup Strategy

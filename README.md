@@ -6,6 +6,8 @@ Basis contains several modules that are used for any software application develo
 - logging
 - security
 - load balancing
+- documentaion
+- coding best practices
 
 
 # Collaborative AI-Powered Knowledge Sharing Platform

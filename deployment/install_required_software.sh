@@ -7,8 +7,9 @@
 #   - Node.js and npm (latest LTS)
 #   - PM2 process manager (latest version)
 #   - Python and pip (latest version)
-#   - Nginx web server (latest version)
+#   - Nginx web server (latest version), also Configure Nginx
 #   - MongoDB database (latest version)
+#   - CloudWatch agent (latest version)
 # Usage: ./install_required_software.sh
 # =============================================================================
 
@@ -26,6 +27,9 @@ print_version() {
 echo "Updating system packages..."
 sudo apt update && sudo apt upgrade -y
 
+# ---------------
+# Node.js
+# ---------------
 # ✅ Install Node.js (latest LTS)
 echo "Installing Node.js (latest LTS)..."
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
@@ -43,6 +47,9 @@ echo "Installing PM2 (latest version)..."
 sudo npm install -g pm2@latest
 print_version "PM2" "$(pm2 --version)"
 
+# ---------------
+# Python
+# ---------------
 # ✅ Install Python and pip (latest version)
 echo "Installing Python and pip (latest version)..."
 sudo apt install -y software-properties-common # provides several important tools for managing software repositories and package sources. 
@@ -52,11 +59,20 @@ sudo apt install -y python3.12 python3.12-venv python3-pip
 print_version "Python" "$(python3 --version)"
 print_version "pip" "$(pip3 --version)"
 
+# ---------------
+# Nginx
+# ---------------
 # ✅ Install nginx (latest version)
 echo "Installing Nginx (latest version)..."
 sudo apt install -y nginx
 print_version "Nginx" "$(nginx -v 2>&1)"
 
+# Configure Nginx
+./configure_nginx.sh
+
+# ---------------
+# MongoDB
+# ---------------
 # Install MongoDB (latest version - 8.0)
 echo "Installing MongoDB (latest version - 8.0)..."
 # First, install libssl1.1 which is required by MongoDB 8.0
@@ -71,5 +87,14 @@ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb
 sudo apt update
 sudo apt install -y mongodb-org
 print_version "MongoDB" "$(mongod --version | head -n 1)"
+
+# ---------------
+# CloudWatch Agent
+# ---------------
+echo "Setting up CloudWatch Agent..."
+# Make the CloudWatch setup script executable
+chmod +x ./setup_cloudwatch_agent.sh
+# Run the CloudWatch setup script
+./setup_cloudwatch_agent.sh
 
 echo "✅ All software installed successfully!"
