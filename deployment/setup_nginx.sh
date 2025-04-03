@@ -1,19 +1,52 @@
 #!/bin/bash
 
 # =============================================================================
-# Script: configure_nginx.sh
-# Purpose: Configure Nginx for the Basis project
-# Description: This script sets up Nginx as a reverse proxy for:
-#   - Next.js frontend (port 3000)
-#   - Python backend (port 8000)
-# WHEN IP CHNAGES: run the script again with the new IP address when your EC2 instance's IP changes. This is a common scenario with EC2 instances, especially when they are stopped and started again. 
-#
-# Best Practices to handle IP Changes:
-# 1. Assign an Elastic IP to your EC2 instance
-# 2. Use a domain name instead of an IP address
+# Script: setup_nginx.sh
+# Purpose: Install and configure Nginx for the Basis project
+# Description: This script automates the installation of:
+#   - Nginx web server (latest version)
 # 
-# Usage: ./configure_nginx.sh
+# Nginx is used for:
+#   - Serving the Next.js frontend application
+#   - Acting as a reverse proxy for the Python backend
+#   - Handling SSL/TLS termination
+#   - Managing static file serving
+# 
+# Usage: ./setup_nginx.sh
 # =============================================================================
+
+set -e  # Exit immediately if a command exits with a non-zero status
+
+# Function to print version information
+print_version() {
+    echo "✅ $1 version: $2"
+}
+
+# ---------------
+# Nginx
+# ---------------
+# ✅ Install Nginx
+echo "Installing Nginx..."
+sudo apt install -y nginx
+print_version "Nginx" "$(nginx -v 2>&1)"
+
+# Start Nginx service
+echo "Starting Nginx service..."
+sudo systemctl start nginx
+
+# Enable Nginx to start on boot
+echo "Enabling Nginx to start on boot..."
+sudo systemctl enable nginx
+
+# Verify Nginx is running
+if systemctl is-active --quiet nginx; then
+    echo "✅ Nginx is running"
+else
+    echo "❌ Nginx failed to start. Check logs with: sudo systemctl status nginx"
+    exit 1
+fi
+
+echo "✅ Nginx setup completed successfully!"
 
 # Get the server's public IP address
 echo "Detecting server IP address..."

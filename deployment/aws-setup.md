@@ -42,8 +42,6 @@ ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-dev-key.pem" ubuntu@
 ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-prod-key.pem" ubuntu@51.20.32.201
 ```
 
-
-
 ## Server Setup
 
 ### Initial Setup
@@ -56,7 +54,6 @@ cd /home/ubuntu
 git clone https://github.com/MohitShukla/basis.git
 ```
 
-
 3. ✅ Run script to install required software:
    ```bash
    /home/ubuntu/install_required_software.sh
@@ -65,13 +62,6 @@ git clone https://github.com/MohitShukla/basis.git
 
 
 
-
-## Monitoring
-
-### CloudWatch Agent Setup
-```bash
-
-```
 
 ## Backup Strategy
 

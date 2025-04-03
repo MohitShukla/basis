@@ -4,10 +4,11 @@ Use only bootstrap. No hardcoded CSS.
 # Documention
 
 # Icons used in doucmentation
-✅❌🚧
+✅❌🚧🔵
 ✅ : Tested OK
 ❌ : Failed 
 🚧 : Work in Progress
+🔵 : Pull attention
 
 - Each project folder or sub-directory has its own README.md. This is the primary file of that folder.
 - README contains epics/stories implemented in that section   
