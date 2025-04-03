@@ -52,7 +52,7 @@ sudo apt install -y python3.12 python3.12-venv python3-pip
 print_version "Python" "$(python3 --version)"
 print_version "pip" "$(pip3 --version)"
 
-# Install nginx (latest version)
+# ✅ Install nginx (latest version)
 echo "Installing Nginx (latest version)..."
 sudo apt install -y nginx
 print_version "Nginx" "$(nginx -v 2>&1)"
@@ -65,7 +65,7 @@ wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubun
 sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 rm libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 
-# Now install MongoDB 8.0
+# ✅ Install MongoDB 8.0
 wget -qO - https://www.mongodb.org/static/pgp/server-8.0.asc | sudo apt-key add -
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
 sudo apt update

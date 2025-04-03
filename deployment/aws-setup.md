@@ -52,45 +52,18 @@ ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-prod-key.pem" ubuntu
 
 ```bash
 # clone basis project
+cd /home/ubuntu
 git clone https://github.com/MohitShukla/basis.git
 ```
 
 
-3. ❌ Run the installation script:
+3. ✅ Run script to install required software:
    ```bash
-   cd /path/to/basis
-   chmod +x deployment/install_required_software.sh
-   ./deployment/install_required_software.sh
+   /home/ubuntu/install_required_software.sh
    ```
-   This script will install all required software including Node.js, PM2, Python, pip, and nginx.
-   
    See [install_required_software.sh](../deployment/install_required_software.sh) for details of what gets installed.
 
 
-### Required Software Installation
-```bash
-# Update system
-sudo apt update && sudo apt upgrade -y
-
-# Install Node.js
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y nodejs
-
-# Install PM2 globally
-sudo npm install -g pm2
-
-# Install Python and pip
-sudo apt install -y python3-pip python3-venv
-
-# Install nginx
-sudo apt install -y nginx
-
-# Install MongoDB
-wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
-sudo apt update
-sudo apt install -y mongodb-org
-```
 
 ### Nginx Configuration
 

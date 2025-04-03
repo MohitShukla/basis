@@ -1,5 +1,13 @@
 # Basis
 
+# What is Basis?
+Basis contains several modules that are used for any software application development.
+- oAuth
+- logging
+- security
+- load balancing
+
+
 # Collaborative AI-Powered Knowledge Sharing Platform
 
 Software platform that enables groups of users to create private knowledge bases powered by AI, where members can share content and get AI-assisted answers based on their group's collective knowledge.
