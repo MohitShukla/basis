@@ -1,5 +1,6 @@
 # Basis
 
+
 # What is Basis?
 Basis contains several modules that are used for any software application development.
 - oAuth
@@ -8,6 +9,8 @@ Basis contains several modules that are used for any software application develo
 - load balancing
 - documentaion
 - coding best practices
+
+Basis also defines and embed many best practices of software engineering into it.  
 
 
 # Collaborative AI-Powered Knowledge Sharing Platform
