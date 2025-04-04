@@ -54,7 +54,7 @@ cd /home/ubuntu
 git clone https://github.com/MohitShukla/basis.git
 ```
 
-3. ✅ Run script to install required software:
+3. ❌ Run script to install required software:
    ```bash
    /home/ubuntu/install_required_software.sh
    ```

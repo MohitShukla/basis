@@ -54,37 +54,7 @@ ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-prod1-key.pem" ubunt
 
 
 ## Install the necessary software on the basis server
-````bash
-# Update system
-sudo apt update && sudo apt upgrade -y
-
-# Install Node.js
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y nodejs
-
-# Install PM2 globally
-sudo npm install -g pm2
-
-# Install Python and pip
-sudo apt install -y python3-pip python3-venv
-
-# Install nginx
-sudo apt install -y nginx
-
-# Install MongoDB
-wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
-sudo apt update
-sudo apt install -y mongodb-org ````
-
-
-You can:
-
-- Use Ubuntu 22.04 LTS
-- Open ports 22, 80, 443, and any custom backend ports
-- Install:
-  - Node.js & PM2 (for Next.js)
-  - Python 3.x, pip, and Gunicorn/Uvicorn (for backend)
+❌ Install as per aws-setup.md 
 
 Optional: Use Elastic Beanstalk, ECS, or Terraform for scaling and automation.
 

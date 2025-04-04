@@ -99,8 +99,3 @@
    - Monitor performance
    - Gather feedback
 
-Would you like to:
-1. Start with a specific component?
-2. Get more detailed design for any phase?
-3. Set up the initial project structure?
-4. Create a detailed timeline for the phases?

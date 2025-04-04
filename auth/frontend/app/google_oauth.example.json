@@ -1,5 +1,4 @@
 {
-  "web": {
     "client_id": "YOUR_CLIENT_ID",
     "project_id": "YOUR_PROJECT_ID",
     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
@@ -8,4 +7,3 @@
     "client_secret": "YOUR_CLIENT_SECRET",
     "redirect_uris": ["http://localhost:3000/api/auth/google/callback"]
   }
-} 

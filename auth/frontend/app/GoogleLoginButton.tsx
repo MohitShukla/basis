@@ -2,19 +2,22 @@
 
 import React, { useState } from 'react';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-import googleOAuthConfig from './google_oauth.json'; // Import the JSON file
+import dotenv from 'dotenv';
+dotenv.config();
 import './GoogleLoginButton.css'; // Import the CSS file for styling
 
+// Load environment variables
+const clientId = process.env.NEXT_PUBLIC_GOOGLE_OAUTH_CLIENT_ID || (() => {
+  throw new Error('GOOGLE_OAUTH_CLIENT_ID is not defined in the environment variables');
+})(); // Ensure clientId is always a string
+
 const GoogleLoginButton = () => {
-  const [profilePic, setProfilePic] = useState<string | null>(null); // State to store the user's profile picture
   const [userName, setUserName] = useState<string | null>(null); // State to store the user's name
-  const clientId = googleOAuthConfig.client_id; // Get the clientId from the JSON file
 
   const onSuccess = (credentialResponse: any) => {
     console.log('Login Success:', credentialResponse);
     const userInfo = JSON.parse(atob(credentialResponse.credential.split('.')[1]));
     console.log('User Info:', userInfo);
-    setProfilePic(userInfo.picture || null);
     setUserName(userInfo.given_name || null);
   };
 
@@ -23,7 +26,6 @@ const GoogleLoginButton = () => {
   };
 
   const handleLogout = () => {
-    setProfilePic(null);
     setUserName(null);
   };
 
