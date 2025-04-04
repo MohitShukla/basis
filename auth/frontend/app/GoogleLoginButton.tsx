@@ -8,7 +8,7 @@ import './GoogleLoginButton.css'; // Import the CSS file for styling
 
 // Load environment variables
 const clientId = process.env.NEXT_PUBLIC_GOOGLE_OAUTH_CLIENT_ID || (() => {
-  throw new Error('GOOGLE_OAUTH_CLIENT_ID is not defined in the environment variables');
+  throw new Error('GOOGLE_OAUTH_CLIENT_ID is not defined. Define it basis/frontend/.env');
 })(); // Ensure clientId is always a string
 
 const GoogleLoginButton = () => {
