@@ -2,15 +2,18 @@
 
 
 # What is Basis?
-Basis contains several modules that are used for any software application development.
-- oAuth
+A software developer can use basis as a starting point of building their web application. Basis provides several ready-to-use out of box software modules that are needed by most applications.  
+- oAuth with Google
+
+In near future, following software modules will be added to Basis.
+- integration with AI (model: GPT-4o)
 - logging
 - security
 - load balancing
-- documentaion
-- coding best practices
 
-Basis also defines and embed many best practices of software engineering into it.  
+Basis also defines and embed following best practices of software engineering into itself:
+- coding best practices 
+- documentaion
 
 
 # Collaborative AI-Powered Knowledge Sharing Platform

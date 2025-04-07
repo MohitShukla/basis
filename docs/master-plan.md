@@ -3,24 +3,25 @@
 1. **Phase 1: Core Infrastructure**
    - ✅ Set up basic project structure
    - ✅ Implement authentication system
-   - Create basic database schema
+   -  Create basic database schema 
    - Set up CI/CD pipeline
+      - ❌ EC2 too slow. Will try again tomorrow. 
    - **This gives us a solid foundation**
 
 2. **Phase 2: Basic Content Management**
-   - Implement group creation and management
    - Basic content posting (text only)
-   - Simple file upload
    - Basic UI/UX
-   - **This gives us a working MVP**
 
 3. **Phase 3: AI Integration**
    - Set up OpenAI integration
    - Implement basic question answering
-   - Add document embedding
    - **This adds the AI layer**
+   - **This gives us a working MVP**  
 
 4. **Phase 4: Advanced Features**
+   - Implement group creation and management
+   - Simple file upload   
+   - Add document embedding
    - Real-time updates
    - Advanced file handling
    - Enhanced AI capabilities
