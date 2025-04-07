@@ -10,13 +10,19 @@
 'use client'; // Required for client-side rendering in the App Router
 
 import React from 'react';
-import GoogleLoginButton from './GoogleLoginButton';
+import Header from './components/Header';
+import PostForm from './components/PostForm';
 
 export default function Home() {
   return (
-    <div>
-      <h1 className="ms-2">Basis</h1>
-      <GoogleLoginButton />
-    </div>
+    <>
+      {/* Header Section */}
+      <Header />
+
+      {/* Main Section */}
+      <main className="container mt-4">
+        <PostForm />
+      </main>
+    </>
   );
 }
