@@ -40,6 +40,7 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
       text: 'Docs',
       children: [
         { id: 51, text: 'Architecture', markdownFile: '/docs/architecture.md' },
+        { id: 52, text: 'Overview', markdownFile: '/docs/basis-documentation/architecture/overview.md' },
       ],
     },
   ];
