@@ -45,7 +45,7 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
     return (
       <ul className="list-unstyled">
         {items.map((item) => (
-          <li key={item.id} className="mb-2">
+          <li key={item.id} className="mt-2 ps-3">
             <div className="d-flex align-items-center">
               {item.children && (
                 <span
