@@ -47,21 +47,21 @@
 ## Data Flow
 
 1. **Content Creation**
-   ```
+   ```bash
    User -> Frontend -> API Gateway -> Backend -> MongoDB
                                     -> S3 (for files)
                                     -> AI Service (for indexing)
    ```
 
 2. **Query Processing**
-   ```
+   ```bash
    User Query -> Frontend -> Backend -> Vector DB
                                     -> AI Service
                                     -> Response Generation
    ```
 
 3. **Real-time Updates**
-   ```
+   ```bash
    User Action -> WebSocket -> Backend -> WebSocket -> Other Users
    ```
 
