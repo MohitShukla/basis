@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "icon": "FaHome",
+    "text": "Home",
+    "link": "/"
+  },
+  {
+    "id": 5,
+    "icon": "FaBook",
+    "text": "Docs",
+    "children": [
+      {
+        "id": 51,
+        "text": "Architecture",
+        "markdownFile": "/docs/architecture.md"
+      },
+      {
+        "id": 52,
+        "text": "Overview",
+        "markdownFile": "/docs/basis-documentation/architecture/overview.md"
+      },
+      {
+        "id": 53,
+        "text": "Master Plan",
+        "icon": "FaFileAlt",
+        "markdownFile": "/docs/basis-documentation/master-plan.md"
+      }
+    ]
+  }
+]

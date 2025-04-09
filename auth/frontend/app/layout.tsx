@@ -37,7 +37,7 @@ export default function RootLayout({
         <Header />
 
         {/* Main Content Section */}
-        <div className="d-flex" style={{ height: 'calc(100vh - 56px)' }}>
+        <div className="d-flex" style={{ minHeight: '100vh', alignItems: 'stretch'  }}>
           <SidePanel onSelect={(file) => setMarkdownFile(file)} /> {/* Left-side navigation panel */}
           <div className="flex-grow-1 p-4">
             {markdownFile ? (
@@ -45,7 +45,7 @@ export default function RootLayout({
             ) : (
               children
             )}
-          </div> {/* Main content */}
+          </div>
         </div>
       </body>
     </html>

@@ -1,16 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FaHome, FaBook, FaUser, FaCog, FaChevronDown, FaChevronRight } from 'react-icons/fa';
+import * as FaIcons from 'react-icons/fa'; // Import all icons from react-icons/fa
 
 interface NavigationItem {
   id: number;
-  icon?: React.ReactNode;
+  icon?: string; // Icon name as a string
   text: string;
   link?: string;
   children?: NavigationItem[];
   markdownFile?: string; // Optional markdown file path
 }
+
+const navigationMenuData: NavigationItem[] = require('../data/navigationMenu.json');
 
 export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?: string) => void }) {
   const [expandedNodes, setExpandedNodes] = useState<Set<number>>(new Set());
@@ -27,23 +29,17 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
     });
   };
 
-  const navigationItems: NavigationItem[] = [
-    {
-      id: 1,
-      icon: <FaHome />,
-      text: 'Home',
-      link: '/',
-    },
-    {
-      id: 5,
-      icon: <FaBook />,
-      text: 'Docs',
-      children: [
-        { id: 51, text: 'Architecture', markdownFile: '/docs/architecture.md' },
-        { id: 52, text: 'Overview', markdownFile: '/docs/basis-documentation/architecture/overview.md' },
-      ],
-    },
-  ];
+  // Dynamically map icons from the JSON data
+  const navigationMenu: NavigationItem[] = navigationMenuData.map((item) => ({
+    ...item,
+    icon: item.icon ? item.icon : undefined,
+    children: item.children
+      ? item.children.map((child) => ({
+          ...child,
+          icon: child.icon ? child.icon : undefined
+        }))
+      : undefined
+  }));
 
   const renderTree = (items: NavigationItem[]) => {
     return (
@@ -57,7 +53,7 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                   style={{ cursor: 'pointer' }}
                   onClick={() => toggleNode(item.id)}
                 >
-                  {expandedNodes.has(item.id) ? <FaChevronDown /> : <FaChevronRight />}
+                  {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
                 </span>
               )}
 
@@ -67,7 +63,8 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                   style={{ cursor: 'pointer' }}
                   onClick={() => onSelect(item.markdownFile)}
                 >
-                  {item.icon && <span className="me-2">{item.icon}</span>}
+                  {/* Dynamically render the icon */}
+                  {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
                   {item.text}
                 </span>
               ) : item.link ? (
@@ -75,12 +72,14 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                   href={item.link}
                   className="text-decoration-none text-dark d-flex align-items-center"
                 >
-                  {item.icon && <span className="me-2">{item.icon}</span>}
+                  {/* Dynamically render the icon */}
+                  {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
                   {item.text}
                 </a>
               ) : (
                 <span className="d-flex align-items-center">
-                  {item.icon && <span className="me-2">{item.icon}</span>}
+                  {/* Dynamically render the icon */}
+                  {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
                   {item.text}
                 </span>
               )}
@@ -95,5 +94,5 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
     );
   };
 
-  return <>{renderTree(navigationItems)}</>;
+  return <>{renderTree(navigationMenu)}</>;
 }
