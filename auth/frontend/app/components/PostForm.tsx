@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 export default function PostForm() {
-  const [formData, setFormData] = useState<string>(''); // State to manage the text box input
+  const [formData, setFormData] = useState<string>('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ export default function PostForm() {
           className="form-control"
           id="inputText"
           value={formData}
-          onChange={(e) => setFormData(e.target.value)} // Update state on input change
+          onChange={(e) => setFormData(e.target.value)}
         />
       </div>
       <button type="submit" className="btn btn-primary">
