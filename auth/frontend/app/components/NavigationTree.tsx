@@ -47,16 +47,6 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
         {items.map((item) => (
           <li key={item.id} className="mt-2 ps-3">
             <div className="d-flex align-items-center">
-              {item.children && (
-                <span
-                  className="me-2"
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => toggleNode(item.id)}
-                >
-                  {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
-                </span>
-              )}
-
               {item.markdownFile ? (
                 <span
                   className="text-decoration-none text-dark d-flex align-items-center"
@@ -66,6 +56,16 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                   {/* Dynamically render the icon before the text */}
                   {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
                   {item.text}
+                  {/* Expand/Collapse icon after the text */}
+                  {item.children && (
+                    <span
+                      className="ms-2"
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => toggleNode(item.id)}
+                    >
+                      {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
+                    </span>
+                  )}
                 </span>
               ) : item.link ? (
                 <a
@@ -75,12 +75,32 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                   {/* Dynamically render the icon before the text */}
                   {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
                   {item.text}
+                  {/* Expand/Collapse icon after the text */}
+                  {item.children && (
+                    <span
+                      className="ms-2"
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => toggleNode(item.id)}
+                    >
+                      {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
+                    </span>
+                  )}
                 </a>
               ) : (
                 <span className="d-flex align-items-center">
                   {/* Dynamically render the icon before the text */}
                   {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
                   {item.text}
+                  {/* Expand/Collapse icon after the text */}
+                  {item.children && (
+                    <span
+                      className="ms-2"
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => toggleNode(item.id)}
+                    >
+                      {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
+                    </span>
+                  )}
                 </span>
               )}
             </div>
