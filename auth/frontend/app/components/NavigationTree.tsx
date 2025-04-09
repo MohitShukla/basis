@@ -29,7 +29,23 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
     });
   };
 
-  // Dynamically map icons from the JSON data
+  const handleSelect = async (markdownFile?: string) => {
+    if (!markdownFile) return;
+
+    try {
+      // Check if the file exists
+      const response = await fetch(markdownFile, { method: 'HEAD' });
+      if (response.ok) {
+        onSelect(markdownFile); // File exists, load it
+      } else {
+        onSelect('/docs/for-basis-users/markdown-page-not-found.md'); // Fallback file
+      }
+    } catch (error) {
+      console.error('Error checking markdown file:', error);
+      onSelect('/docs/for-basis-users/markdown-page-not-found.md'); // Fallback file
+    }
+  };
+
   const navigationMenu: NavigationItem[] = navigationMenuData.map((item) => ({
     ...item,
     icon: item.icon ? item.icon : undefined,
@@ -51,7 +67,7 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                 <span
                   className="text-decoration-none text-dark d-flex align-items-center"
                   style={{ cursor: 'pointer' }}
-                  onClick={() => onSelect(item.markdownFile)}
+                  onClick={() => handleSelect(item.markdownFile)}
                 >
                   {/* Dynamically render the icon before the text */}
                   {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}

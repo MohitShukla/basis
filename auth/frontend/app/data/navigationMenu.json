@@ -11,19 +11,26 @@
     "text": "Docs",
     "children": [
       {
+        "id": 54,
+        "text": "Features",
+        "markdownFile": "/docs/basis-documentation/features.md"
+      },
+      {
         "id": 51,
         "text": "Architecture",
-        "markdownFile": "/docs/architecture.md"
-      },
-      {
-        "id": 52,
-        "text": "Overview",
-        "markdownFile": "/docs/basis-documentation/architecture/overview.md"
-      },
-      {
-        "id": 53,
-        "text": "Master Plan",
-        "markdownFile": "/docs/basis-documentation/master-plan.md"
+        "markdownFile": "/docs/architecture.md",
+        "children": [
+          {
+            "id": 52,
+            "text": "Overview",
+            "markdownFile": "/docs/basis-documentation/architecture/overview.md"
+          },
+          {
+            "id": 53,
+            "text": "Master Plan",
+            "markdownFile": "/docs/basis-documentation/master-plan.md"
+          }
+        ]
       }
     ]
   }
