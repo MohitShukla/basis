@@ -4,8 +4,8 @@ import './globals.css';
 // Importing the Inter font from Google Fonts using Next.js font optimization
 import { Inter } from 'next/font/google';
 
-// Importing a custom component for the header
 import Header from './components/Header';
+import SidePanel from './components/SidePanel';
 
 // Configuring the Inter font with Latin subset
 const inter = Inter({ subsets: ['latin'] });
@@ -28,11 +28,12 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         {/* Header Section */}
-        <Header /> {/* Header with heading and Google login button */}
+        <Header />
 
         {/* Main Content Section */}
         <div className="d-flex" style={{ height: 'calc(100vh - 56px)' }}>
-          {children} {/* Content from page.tsx */}
+          <SidePanel /> {/* Left-side navigation panel */}
+          <div className="flex-grow-1 p-4">{children}</div> {/* Main content */}
         </div>
       </body>
     </html>
