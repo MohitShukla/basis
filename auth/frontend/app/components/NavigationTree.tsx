@@ -63,7 +63,7 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                   style={{ cursor: 'pointer' }}
                   onClick={() => onSelect(item.markdownFile)}
                 >
-                  {/* Dynamically render the icon */}
+                  {/* Dynamically render the icon before the text */}
                   {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
                   {item.text}
                 </span>
@@ -72,13 +72,13 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                   href={item.link}
                   className="text-decoration-none text-dark d-flex align-items-center"
                 >
-                  {/* Dynamically render the icon */}
+                  {/* Dynamically render the icon before the text */}
                   {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
                   {item.text}
                 </a>
               ) : (
                 <span className="d-flex align-items-center">
-                  {/* Dynamically render the icon */}
+                  {/* Dynamically render the icon before the text */}
                   {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
                   {item.text}
                 </span>
