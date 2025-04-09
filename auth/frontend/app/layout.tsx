@@ -1,3 +1,5 @@
+'use client'; // Add this line at the top
+
 // Importing global CSS styles for the application
 import './globals.css';
 
@@ -6,6 +8,8 @@ import { Inter } from 'next/font/google';
 
 import Header from './components/Header';
 import SidePanel from './components/SidePanel';
+import MarkdownViewer from './components/MarkdownViewer';
+import { useState } from 'react';
 
 // Configuring the Inter font with Latin subset
 const inter = Inter({ subsets: ['latin'] });
@@ -17,6 +21,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode; // The type of the `children` prop is React's Node type
 }) {
+  const [markdownFile, setMarkdownFile] = useState<string | undefined>(undefined);
+
   return (
     <html lang="en">
       <head>
@@ -25,15 +31,21 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
           rel="stylesheet"
         />
-      </head>
+      </head>      
       <body className={inter.className}>
         {/* Header Section */}
         <Header />
 
         {/* Main Content Section */}
         <div className="d-flex" style={{ height: 'calc(100vh - 56px)' }}>
-          <SidePanel /> {/* Left-side navigation panel */}
-          <div className="flex-grow-1 p-4">{children}</div> {/* Main content */}
+          <SidePanel onSelect={(file) => setMarkdownFile(file)} /> {/* Left-side navigation panel */}
+          <div className="flex-grow-1 p-4">
+            {markdownFile ? (
+              <MarkdownViewer filePath={markdownFile} />
+            ) : (
+              children
+            )}
+          </div> {/* Main content */}
         </div>
       </body>
     </html>
