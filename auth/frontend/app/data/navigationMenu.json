@@ -11,6 +11,11 @@
     "text": "Docs",
     "children": [
       {
+        "id": "INTRODUCTION",
+        "text": "Introduction",
+        "markdownFile": "/docs/basis-documentation/introduction.md"
+      },
+      {
         "id": 54,
         "text": "Features",
         "markdownFile": "/docs/basis-documentation/features.md"
@@ -18,7 +23,7 @@
       {
         "id": 51,
         "text": "Architecture",
-        "markdownFile": "/docs/architecture.md",
+        "markdownFile": "/docs/basis-documentation/architecture/overview.md",
         "children": [
           {
             "id": 52,
