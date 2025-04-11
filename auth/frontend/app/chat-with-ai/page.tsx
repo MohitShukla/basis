@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
@@ -29,7 +30,9 @@ export default function ChatWithAI() {
         },
         body: JSON.stringify({
           model: model,
-          messages: [{ role: 'user', content: prompt }],
+          messages: [
+            { role: "system", content: "You are a helpful assistant who returns the content in a well formatted markdown format" },
+            { role: 'user', content: prompt }],
         }),
       });
 
@@ -48,7 +51,7 @@ export default function ChatWithAI() {
 
   return (
     <div className="container">
-      <form onSubmit={handleSubmit} className="p-1 border rounded">
+      <form onSubmit={handleSubmit} className="p-1 ">
         <div className="mb-1">
           <textarea
             id="promptInput"
@@ -87,8 +90,8 @@ export default function ChatWithAI() {
       </form>
 
       {response && (
-        <div className="mt-1 p-4">
-          <p>{response}</p>
+        <div className="mt-2 p-2">
+          <ReactMarkdown>{response}</ReactMarkdown>
         </div>
       )}
     </div>

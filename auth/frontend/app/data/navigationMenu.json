@@ -6,6 +6,12 @@
     "link": "/"
   },
   {
+    "id": "ChatWithAI",
+    "icon": "FaRobot",
+    "text": "Talk to AI",
+    "link": "/chat-with-ai"
+  },
+  {
     "id": 5,
     "icon": "FaBook",
     "text": "Docs",
