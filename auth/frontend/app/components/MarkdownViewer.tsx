@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import ReactMarkdown, { Components } from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'; // Syntax highlighting theme
-import './MarkdownViewer.css';
+import '../../styles/markdown.css'; // Custom styles for the markdown viewer
 
 interface MarkdownViewerProps {
   filePath: string; // Path to the markdown file

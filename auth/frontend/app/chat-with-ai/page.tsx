@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import '../../styles/markdown.css';
 
 export default function ChatWithAI() {
   const [prompt, setPrompt] = useState('');
@@ -90,7 +91,7 @@ export default function ChatWithAI() {
       </form>
 
       {response && (
-        <div className="mt-2 p-2">
+        <div className="mt-2 p-2 markdown-container">
           <ReactMarkdown>{response}</ReactMarkdown>
         </div>
       )}
