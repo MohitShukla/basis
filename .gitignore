@@ -45,6 +45,7 @@ dist/
 .env.test.local
 .env.production.local
 google_oauth.json
+auth/frontend/.env
 
 # Debug
 npm-debug.log*
