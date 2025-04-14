@@ -14,7 +14,7 @@ interface NavigationItem {
 
 const navigationMenuData: NavigationItem[] = require('../data/navigationMenu.json');
 
-export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?: string) => void }) {
+export default function NavigationTree({ onSelect }: { readonly onSelect: (markdownFile?: string) => void }) {
   const [expandedNodes, setExpandedNodes] = useState<Set<number>>(new Set());
 
   const toggleNode = (id: number) => {
@@ -48,13 +48,13 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
 
   const navigationMenu: NavigationItem[] = navigationMenuData.map((item) => ({
     ...item,
-    icon: item.icon ? item.icon : undefined,
+    icon: item.icon ?? undefined, // Use nullish coalescing operator
     children: item.children
       ? item.children.map((child) => ({
           ...child,
-          icon: child.icon ? child.icon : undefined
+          icon: child.icon ?? undefined, // Use nullish coalescing operator
         }))
-      : undefined
+      : undefined,
   }));
 
   const renderTree = (items: NavigationItem[]) => {

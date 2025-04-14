@@ -14,7 +14,7 @@ interface MarkdownViewerProps {
 // Define custom components outside the parent component
 const customComponents: Components = {
   code({ node, inline, className, children, ...props }: any) {
-    const match = /language-(\w+)/.exec(className || '');
+    const match = /language-(\w+)/.exec(className ?? '');
     return !inline && match ? (
       <SyntaxHighlighter
         style={oneDark}
