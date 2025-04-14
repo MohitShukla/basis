@@ -101,7 +101,6 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                 <a
                   href={item.link}
                   className="text-decoration-none text-dark d-flex align-items-center"
-                  role="link" // Indicates this is a link
                 >
                   {/* Dynamically render the icon before the text */}
                   {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
