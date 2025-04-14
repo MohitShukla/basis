@@ -57,92 +57,95 @@ export default function NavigationTree({ onSelect }: { readonly onSelect: (markd
       : undefined,
   }));
 
+  const renderItemContent = (item: NavigationItem) => {
+    if (item.markdownFile) {
+      return (
+        <div className="d-flex align-items-center">
+          <button
+            className="text-decoration-none text-dark d-flex align-items-center"
+            style={{
+              cursor: 'pointer',
+              background: 'none',
+              border: 'none',
+              padding: 0,
+            }} // Reset button styles
+            onClick={() => handleSelect(item.markdownFile)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                handleSelect(item.markdownFile); // Trigger action on Enter or Space key
+              }
+            }}
+          >
+            {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
+            {item.text}
+          </button>
+          {item.children && (
+            <button
+              className="ms-2"
+              style={{
+                cursor: 'pointer',
+                background: 'none',
+                border: 'none',
+                padding: 0,
+              }} // Reset button styles
+              onClick={() => toggleNode(item.id)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  toggleNode(item.id); // Trigger action on Enter or Space key
+                }
+              }}
+            >
+              {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
+            </button>
+          )}
+        </div>
+      );
+    }
+
+    if (item.link) {
+      return (
+        <a href={item.link} className="text-decoration-none text-dark d-flex align-items-center">
+          {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
+          {item.text}
+        </a>
+      );
+    }
+
+    return (
+      <span className="d-flex align-items-center">
+        {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
+        {item.text}
+        {item.children && (
+          <button
+            className="ms-2"
+            style={{
+              cursor: 'pointer',
+              background: 'none',
+              border: 'none',
+              padding: 0,
+            }} // Reset button styles
+            onClick={() => toggleNode(item.id)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                toggleNode(item.id); // Trigger action on Enter or Space key
+              }
+            }}
+          >
+            {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
+          </button>
+        )}
+      </span>
+    );
+  };
+
   const renderTree = (items: NavigationItem[]) => {
     return (
       <ul className="list-unstyled">
         {items.map((item) => (
           <li key={item.id} className="mt-2 ps-3">
             <div className="d-flex align-items-center">
-              {item.markdownFile ? (
-                <div className="d-flex align-items-center">
-                  <button
-                    className="text-decoration-none text-dark d-flex align-items-center"
-                    style={{
-                      cursor: 'pointer',
-                      background: 'none',
-                      border: 'none',
-                      padding: 0,
-                    }} // Reset button styles
-                    onClick={() => handleSelect(item.markdownFile)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        handleSelect(item.markdownFile); // Trigger action on Enter or Space key
-                      }
-                    }}
-                  >
-                    {/* Dynamically render the icon before the text */}
-                    {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
-                    {item.text}
-                  </button>
-                  {/* Expand/Collapse button rendered outside the parent button */}
-                  {item.children && (
-                    <button
-                      className="ms-2"
-                      style={{
-                        cursor: 'pointer',
-                        background: 'none',
-                        border: 'none',
-                        padding: 0,
-                      }} // Reset button styles
-                      onClick={() => toggleNode(item.id)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          toggleNode(item.id); // Trigger action on Enter or Space key
-                        }
-                      }}
-                    >
-                      {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
-                    </button>
-                  )}
-                </div>
-              ) : item.link ? (
-                <a
-                  href={item.link}
-                  className="text-decoration-none text-dark d-flex align-items-center"
-                >
-                  {/* Dynamically render the icon before the text */}
-                  {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
-                  {item.text}
-                </a>
-              ) : (
-                <span className="d-flex align-items-center">
-                  {/* Dynamically render the icon before the text */}
-                  {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
-                  {item.text}
-                  {/* Expand/Collapse button rendered here */}
-                  {item.children && (
-                    <button
-                      className="ms-2"
-                      style={{
-                        cursor: 'pointer',
-                        background: 'none',
-                        border: 'none',
-                        padding: 0,
-                      }} // Reset button styles
-                      onClick={() => toggleNode(item.id)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          toggleNode(item.id); // Trigger action on Enter or Space key
-                        }
-                      }}
-                    >
-                      {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
-                    </button>
-                  )}
-                </span>
-              )}
+              {renderItemContent(item)}
             </div>
-
             {item.children && expandedNodes.has(item.id) && (
               <div className="ms-4">{renderTree(item.children)}</div>
             )}
