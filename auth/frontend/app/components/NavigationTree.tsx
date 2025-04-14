@@ -84,7 +84,14 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                     <span
                       className="ms-2"
                       style={{ cursor: 'pointer' }}
+                      role="button" // Adds a button role for accessibility
+                      tabIndex={0} // Makes it focusable via keyboard
                       onClick={() => toggleNode(item.id)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          toggleNode(item.id); // Trigger action on Enter or Space key
+                        }
+                      }}
                     >
                       {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
                     </span>
@@ -104,7 +111,14 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                     <span
                       className="ms-2"
                       style={{ cursor: 'pointer' }}
+                      role="button" // Adds a button role for accessibility
+                      tabIndex={0} // Makes it focusable via keyboard
                       onClick={() => toggleNode(item.id)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          toggleNode(item.id); // Trigger action on Enter or Space key
+                        }
+                      }}
                     >
                       {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
                     </span>
@@ -120,7 +134,14 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                     <span
                       className="ms-2"
                       style={{ cursor: 'pointer' }}
+                      role="button" // Adds a button role for accessibility
+                      tabIndex={0} // Makes it focusable via keyboard
                       onClick={() => toggleNode(item.id)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          toggleNode(item.id); // Trigger action on Enter or Space key
+                        }
+                      }}
                     >
                       {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
                     </span>
