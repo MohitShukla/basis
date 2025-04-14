@@ -19,7 +19,7 @@ const inter = Inter({ subsets: ['latin'] });
 export default function RootLayout({
   children, // The `children` prop represents the content of the page being rendered
 }: {
-  children: React.ReactNode; // The type of the `children` prop is React's Node type
+  readonly children: React.ReactNode; // Mark the `children` prop as readonly
 }) {
   const [markdownFile, setMarkdownFile] = useState<string | undefined>(undefined);
 
