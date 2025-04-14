@@ -64,28 +64,36 @@ export default function NavigationTree({ onSelect }: { readonly onSelect: (markd
           <li key={item.id} className="mt-2 ps-3">
             <div className="d-flex align-items-center">
               {item.markdownFile ? (
-                <span
-                  className="text-decoration-none text-dark d-flex align-items-center"
-                  style={{ cursor: 'pointer' }}
-                  role="button" // Indicates this is a button
-                  tabIndex={0} // Makes it focusable via keyboard
-                  onClick={() => handleSelect(item.markdownFile)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      handleSelect(item.markdownFile); // Trigger action on Enter or Space key
-                    }
-                  }}
-                >
-                  {/* Dynamically render the icon before the text */}
-                  {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
-                  {item.text}
-                  {/* Expand/Collapse icon after the text */}
+                <div className="d-flex align-items-center">
+                  <button
+                    className="text-decoration-none text-dark d-flex align-items-center"
+                    style={{
+                      cursor: 'pointer',
+                      background: 'none',
+                      border: 'none',
+                      padding: 0,
+                    }} // Reset button styles
+                    onClick={() => handleSelect(item.markdownFile)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        handleSelect(item.markdownFile); // Trigger action on Enter or Space key
+                      }
+                    }}
+                  >
+                    {/* Dynamically render the icon before the text */}
+                    {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
+                    {item.text}
+                  </button>
+                  {/* Expand/Collapse button rendered outside the parent button */}
                   {item.children && (
-                    <span
+                    <button
                       className="ms-2"
-                      style={{ cursor: 'pointer' }}
-                      role="button" // Adds a button role for accessibility
-                      tabIndex={0} // Makes it focusable via keyboard
+                      style={{
+                        cursor: 'pointer',
+                        background: 'none',
+                        border: 'none',
+                        padding: 0,
+                      }} // Reset button styles
                       onClick={() => toggleNode(item.id)}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
@@ -94,9 +102,9 @@ export default function NavigationTree({ onSelect }: { readonly onSelect: (markd
                       }}
                     >
                       {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
-                    </span>
+                    </button>
                   )}
-                </span>
+                </div>
               ) : item.link ? (
                 <a
                   href={item.link}
@@ -105,36 +113,22 @@ export default function NavigationTree({ onSelect }: { readonly onSelect: (markd
                   {/* Dynamically render the icon before the text */}
                   {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
                   {item.text}
-                  {/* Expand/Collapse icon after the text */}
-                  {item.children && (
-                    <span
-                      className="ms-2"
-                      style={{ cursor: 'pointer' }}
-                      role="button" // Adds a button role for accessibility
-                      tabIndex={0} // Makes it focusable via keyboard
-                      onClick={() => toggleNode(item.id)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          toggleNode(item.id); // Trigger action on Enter or Space key
-                        }
-                      }}
-                    >
-                      {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
-                    </span>
-                  )}
                 </a>
               ) : (
                 <span className="d-flex align-items-center">
                   {/* Dynamically render the icon before the text */}
                   {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
                   {item.text}
-                  {/* Expand/Collapse icon after the text */}
+                  {/* Expand/Collapse button rendered here */}
                   {item.children && (
-                    <span
+                    <button
                       className="ms-2"
-                      style={{ cursor: 'pointer' }}
-                      role="button" // Adds a button role for accessibility
-                      tabIndex={0} // Makes it focusable via keyboard
+                      style={{
+                        cursor: 'pointer',
+                        background: 'none',
+                        border: 'none',
+                        padding: 0,
+                      }} // Reset button styles
                       onClick={() => toggleNode(item.id)}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
@@ -143,7 +137,7 @@ export default function NavigationTree({ onSelect }: { readonly onSelect: (markd
                       }}
                     >
                       {expandedNodes.has(item.id) ? <FaIcons.FaChevronDown /> : <FaIcons.FaChevronRight />}
-                    </span>
+                    </button>
                   )}
                 </span>
               )}
