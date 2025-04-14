@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import NavigationTree from './NavigationTree';
+import NavigationTree from './NavigationTree/NavigationTree';
 
 export default function SidePanel({ onSelect }: { readonly onSelect: (markdownFile?: string) => void }) {
   return (
