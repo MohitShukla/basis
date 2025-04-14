@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
-const clientId = process.env.NEXT_PUBLIC_GOOGLE_OAUTH_CLIENT_ID || (() => {
+const clientId = process.env.NEXT_PUBLIC_GOOGLE_OAUTH_CLIENT_ID ?? (() => {
   throw new Error('GOOGLE_OAUTH_CLIENT_ID is not defined in the environment variables');
 })();
 
@@ -12,7 +12,7 @@ export default function GoogleLoginButton() {
 
   const onSuccess = (credentialResponse: any) => {
     const userInfo = JSON.parse(atob(credentialResponse.credential.split('.')[1]));
-    setUserName(userInfo.given_name || null);
+    setUserName(userInfo.given_name ?? null);
   };
 
   const onError = () => {
