@@ -1,20 +1,24 @@
 # Architecture
 
-## System Components
+## System Components and Tech Stack
 
+1. **Code Quality**
+   - Github: for version control
+   - SonarQube : Because Basis cares about code quality, technical debt, and early detection of bugs or security issues more than adding new features.
+   
 1. **Frontend**
    - React/Next.js web application
    - Bootstrap for UI components
    - Real-time updates using WebSocket
    - File upload with progress tracking
 
-2. **Backend**
+1. **Backend**
    - Python FastAPI/Django REST framework
    - JWT-based authentication
    - Role-based access control (RBAC)
    - WebSocket server for real-time features
 
-3. **Database**
+1. **Database**
    - MongoDB for document storage
    - Redis for caching and session management
    - Collections structure:
@@ -23,26 +27,29 @@
      - Content
      - Permissions
 
-4. **AI/ML Layer**
+1. **AI/ML Layer**
    - OpenAI GPT API integration
    - Vector database (e.g., Pinecone) for semantic search
    - Document embedding pipeline
    - Query processing and response generation
 
-5. **File Storage**
-   - AWS S3 or similar for file storage
+1. **File Storage**
+   - AWS S3
    - File metadata stored in MongoDB
    - File access control through signed URLs
 
-6. **Authentication**
+1. **Authentication**
    - OAuth 2.0 for social login (Google)
    - JWT for session management
    - Role-based permissions system
 
-7. **API Gateway**
+1. **API Gateway**
    - RESTful API endpoints
    - Webhook system for external integrations
    - Rate limiting and request validation
+
+
+
 
 ## Data Flow
 
