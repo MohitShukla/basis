@@ -4,7 +4,7 @@
 
 1. **Code Quality**
    - **Github:** for version control
-   - SonarQube : Because Basis cares about code quality, technical debt, and early detection of bugs or security issues more than adding new features.
+   - **SonarQube** : Because Basis cares about code quality, technical debt, and early detection of bugs or security issues more than adding new features.
    
 1. **Frontend**
    - React/Next.js web application
