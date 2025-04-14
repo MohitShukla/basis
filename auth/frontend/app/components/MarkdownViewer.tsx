@@ -8,8 +8,29 @@ import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'; // Syn
 import '../../styles/markdown.css'; // Custom styles for the markdown viewer
 
 interface MarkdownViewerProps {
-  filePath: string; // Path to the markdown file
+  readonly filePath: string; // Path to the markdown file
 }
+
+// Define custom components outside the parent component
+const customComponents: Components = {
+  code({ node, inline, className, children, ...props }: any) {
+    const match = /language-(\w+)/.exec(className || '');
+    return !inline && match ? (
+      <SyntaxHighlighter
+        style={oneDark}
+        language={match[1]}
+        PreTag="div"
+        {...props}
+      >
+        {String(children).replace(/\n$/, '')}
+      </SyntaxHighlighter>
+    ) : (
+      <code className={className} {...props}>
+        {children}
+      </code>
+    );
+  },
+};
 
 export default function MarkdownViewer({ filePath }: MarkdownViewerProps) {
   const [content, setContent] = useState<string>('');
@@ -22,30 +43,11 @@ export default function MarkdownViewer({ filePath }: MarkdownViewerProps) {
       .catch((error) => console.error('Error loading markdown file:', error));
   }, [filePath]);
 
-  // Define custom components with proper typing
-  const customComponents: Components = {
-    code({ node, inline, className, children, ...props }: any) {
-      const match = /language-(\w+)/.exec(className || '');
-      return !inline && match ? (
-        <SyntaxHighlighter
-          style={oneDark}
-          language={match[1]}
-          PreTag="div"
-          {...props}
-        >
-          {String(children).replace(/\n$/, '')}
-        </SyntaxHighlighter>
-      ) : (
-        <code className={className} {...props}>
-          {children}
-        </code>
-      );
-    },
-  };
-
   return (
     <div className="markdown-container">
-      <ReactMarkdown remarkPlugins={[remarkGfm]} components={customComponents}>{content}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={customComponents}>
+        {content}
+      </ReactMarkdown>
     </div>
   );
 }
