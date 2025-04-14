@@ -1,12 +1,12 @@
 name: SonarCloud
 
 on:
-  push:
-    branches:
-      - "**"
   pull_request:
     branches:
-      - "**"
+      - main
+  push:
+    branches:
+      - dev
 
 jobs:
   build:
@@ -27,6 +27,13 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: >
-            -Dsonar.organization=mohitshukla -Dsonar.projectKey=MohitShukla_basis
+            -Dsonar.organization=mohitshukla
+            -Dsonar.projectKey=MohitShukla_basis
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Ensure this secret is defined in your repository
+      - name: Check Quality Gate
+        run: |
+          curl -u "${{ secrets.SONAR_TOKEN }}:" "https://sonarcloud.io/api/qualitygates/project_status?projectKey=MohitShukla_basis" > quality_gate.json
+          if [ "$(jq -r '.projectStatus.status' quality_gate.json)" != "OK" ]; then
+            echo "Quality Gate failed!"
+            exit 1
