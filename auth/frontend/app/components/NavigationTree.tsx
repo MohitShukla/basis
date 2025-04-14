@@ -67,7 +67,14 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                 <span
                   className="text-decoration-none text-dark d-flex align-items-center"
                   style={{ cursor: 'pointer' }}
+                  role="button" // Indicates this is a button
+                  tabIndex={0} // Makes it focusable via keyboard
                   onClick={() => handleSelect(item.markdownFile)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      handleSelect(item.markdownFile); // Trigger action on Enter or Space key
+                    }
+                  }}
                 >
                   {/* Dynamically render the icon before the text */}
                   {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
@@ -87,6 +94,7 @@ export default function NavigationTree({ onSelect }: { onSelect: (markdownFile?:
                 <a
                   href={item.link}
                   className="text-decoration-none text-dark d-flex align-items-center"
+                  role="link" // Indicates this is a link
                 >
                   {/* Dynamically render the icon before the text */}
                   {item.icon && <span className="me-2">{React.createElement(FaIcons[item.icon as keyof typeof FaIcons])}</span>}
