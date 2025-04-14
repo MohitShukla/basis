@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown, { Components } from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'; // Syntax highlighting theme
 import '../../styles/markdown.css'; // Custom styles for the markdown viewer
@@ -44,7 +45,7 @@ export default function MarkdownViewer({ filePath }: MarkdownViewerProps) {
 
   return (
     <div className="markdown-container">
-      <ReactMarkdown components={customComponents}>{content}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={customComponents}>{content}</ReactMarkdown>
     </div>
   );
 }

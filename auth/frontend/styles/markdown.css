@@ -54,7 +54,6 @@
 
 .markdown-container blockquote {
   font-size: 1.25rem; /* Matches Bootstrap's blockquote font size */
-  font-style: italic;
   border-left: 4px solid #007bff; /* Add a custom left border */
   background: aliceblue; /* Light blue background */
   
@@ -65,4 +64,38 @@
 
 .markdown-container blockquote p {
   margin: 0; /* Remove default paragraph margin inside blockquote */
+}
+
+.markdown-container table {
+  width: 100%;
+  border-collapse: separate; /* Use separate to allow rounded corners */
+  border-spacing: 0; /* Remove gaps between cells */
+  margin: 1em 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: 1px solid #ddd; /* Add a border around the table */
+  border-radius: 8px; /* Add rounded corners */
+  overflow: hidden; /* Ensure the rounded corners apply to the table content */
+}
+
+.markdown-container th,
+.markdown-container td {
+  border: 1px solid #ddd; /* Keep borders for table cells */
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.markdown-container th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+}
+
+.markdown-container tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.markdown-container tr:hover {
+  background-color: #f0f0f0;
 }

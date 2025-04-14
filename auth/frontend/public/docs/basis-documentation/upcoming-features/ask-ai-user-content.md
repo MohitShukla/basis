@@ -1,4 +1,4 @@
-# Ask Questions to AI on Your Own Content=
+# Ask Questions to AI on Your Own Content
 
 ## Requirement 
 AI tool where 
@@ -7,6 +7,22 @@ AI tool where
 
 ### Technical descripton of requirements
 This a classic **“RAG” (Retrieval-Augmented Generation)** use case — where the user uploads or writes content, and the AI answers questions based on that content, not just **pre-training**.
+
+
+## Concepts
+
+**Big Picture Flow (RAG Context)**
+> Text → Embedding Model → Vector → Store in Vector DB → Query → Retrieve → GPT Answer
+
+**Vector:** list of numbers. 
+- Example: “The capital of France is Paris”. → Vector =	[0.21, -0.55, 0.38, ..., 0.04] (e.g., 768 or 1536 dimensions)
+
+
+**Embedding Model:**  Transforms text into a vector (list of numbers) that captures semantic meaning. Responsibilities:
+- Encode meaning of text
+- Keep semantically similar sentences close in vector space
+- Usually used once per document chunk (cost-effective)
+
 
 ## 🧱 TECHNICAL ARCHITECTURE OVERVIEW
 
@@ -60,7 +76,7 @@ Accept up to ~10 MB of user-generated content (posts + .txt files) and allow nat
 ## 🏗️ TECH STACK DESIGN
 
 | Layer          | Tech Choices                                                                 |
-|----------------|------------------------------------------------------------------------------|
+|-----------------|------------------------------------------------------------------------------|
 | Frontend       | Next.js + React + TailwindCSS + Axios                                       |
 | Backend API    | FastAPI (Python) or Express.js (Node)                                       |
 | Text Embeddings| OpenAI (text-embedding-3-small), or open-source via Hugging Face (e.g., all-MiniLM) |

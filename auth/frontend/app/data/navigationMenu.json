@@ -41,7 +41,7 @@
             "text": "Master Plan",
             "markdownFile": "/docs/basis-documentation/master-plan.md"
           },{
-            "id": 53,
+            "id": "ASK-AI-BASED-ON-USER-CONTENT",
             "text": "Ask AI Based on User Content",
             "markdownFile": "/docs/basis-documentation/upcoming-features/ask-ai-user-content.md"
           }
