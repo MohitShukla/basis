@@ -1,11 +1,17 @@
 import React from 'react';
-import * as FaIcons from 'react-icons/fa';
 
-const IconWithText: React.FC<{ icon?: string; text: string }> = ({ icon, text }) => (
-  <>
-    {icon && <span className="me-2">{React.createElement(FaIcons[icon as keyof typeof FaIcons])}</span>}
-    {text}
-  </>
-);
+interface IconWithTextProps {
+  icon?: string;
+  text: string;
+}
+
+const IconWithText: React.FC<IconWithTextProps> = ({ icon, text }) => {
+  return (
+    <div>
+      {icon && <span data-testid="icon">{icon}</span>}
+      <span>{text}</span>
+    </div>
+  );
+};
 
 export default IconWithText;

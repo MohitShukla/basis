@@ -52,6 +52,9 @@
    - Webhook system for external integrations
    - Rate limiting and request validation
 
+1. **Runtime Evvironments**
+   - Test Environment: Vercel
+   - Production: EC2
 
 
 
