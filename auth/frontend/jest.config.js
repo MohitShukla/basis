@@ -1,14 +1,12 @@
 // jest.config.js
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'jest-environment-jsdom',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  testMatch: ['**/*.test.ts', '**/*.test.tsx'],
+  testEnvironment: 'jsdom', // Required for testing React components
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'], // Recognize these file extensions
+  testMatch: ['**/__tests__/**/*.ts?(x)', '**/?(*.)+(spec|test).ts?(x)'],
   transform: {
-    '^.+\\.(ts|tsx)$': ['ts-jest', {
-      tsconfig: 'tsconfig.json',
-      jsx: 'react-jsx'
-    }]
+    '^.+\\.(ts|tsx)$': ['babel-jest', { configFile: './babel.config.jest.js' }],
+    '^.+\\.jsx?$': ['babel-jest', { configFile: './babel.config.jest.js' }],
+    'node_modules/react-icons/.+\\.js$': ['babel-jest', { configFile: './babel.config.jest.js' }]
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
   moduleNameMapper: {
