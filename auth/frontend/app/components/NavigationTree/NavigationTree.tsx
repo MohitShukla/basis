@@ -100,7 +100,7 @@ export default function NavigationTree({ onSelect }: { readonly onSelect: (markd
 
   const renderTree = (items: NavigationItem[]) => {
     return (
-      <ul className="list-unstyled">
+      <ul className="list-unstyled fs-7 fw-light">
         {items.map((item) => (
           <li key={item.id} className="mt-2 ps-3">
             <div className="d-flex align-items-center">

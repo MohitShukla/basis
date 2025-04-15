@@ -1,0 +1,19 @@
+/* Custom Bootstrap CSS for personal project: 
+This file contains custom styles to override Bootstrap defaults 
+and add additional utility classes, 
+including granular font size utilities. 
+*/
+
+
+.fs-7 {
+  font-size: 0.875rem !important; /* Smaller than Bootstrap's smallest size */
+}
+
+.fs-8 {
+    font-size: 0.75rem !important; /* Even smaller */
+  }
+
+.fs-9 {
+  font-size: 0.625rem !important; /* Even smaller */
+}
+
