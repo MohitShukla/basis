@@ -3,9 +3,10 @@
 import React, { useState } from 'react';
 import ExpandCollapseButton from './ExpandCollapseButton';
 import IconWithText from './IconWithText';
+import navigationMenuData from '../../data/navigationMenu.json';
 
 interface NavigationItem {
-  id: number;
+  id: number | string; // Updated to accept both number and string
   icon?: string;
   text: string;
   link?: string;
@@ -13,20 +14,18 @@ interface NavigationItem {
   markdownFile?: string;
 }
 
-const navigationMenuData: NavigationItem[] = require('../../data/navigationMenu.json');
-
 export default function NavigationTree({ onSelect }: { readonly onSelect: (markdownFile?: string) => void }) {
-  const [expandedNodes, setExpandedNodes] = useState<Set<number>>(new Set());
+  const [expandedNodes, setExpandedNodes] = useState<Set<number | string>>(new Set());
 
-  const toggleNode = (id: number) => {
+  const toggleNode = (id: number | string) => {
     setExpandedNodes((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(id)) {
-        newSet.delete(id);
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
       } else {
-        newSet.add(id);
+        next.add(id);
       }
-      return newSet;
+      return next;
     });
   };
 

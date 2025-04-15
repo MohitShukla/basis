@@ -86,4 +86,5 @@ yarn-error.log*
 .env.local
 .env.development.local
 .env.test.local
-.env.production.local .scannerwork/
+.env.production.local 
+.scannerwork/
