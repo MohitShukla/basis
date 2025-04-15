@@ -1,0 +1,7 @@
+organization=mohitshukla
+projectKey=basis
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.62008
+dashboardUrl=https://sonarcloud.io/dashboard?id=basis
+ceTaskId=AZY5KeS_MWm9NcyYOixr
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZY5KeS_MWm9NcyYOixr

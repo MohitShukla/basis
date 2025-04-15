@@ -16,5 +16,15 @@ module.exports = {
   },
   transformIgnorePatterns: [
     '/node_modules/(?!(@react-oauth|react-icons)/)'
+  ],
+  collectCoverage: true,
+  coverageReporters: ['lcov', 'text', 'clover'],
+  coverageDirectory: 'coverage',
+  collectCoverageFrom: [
+    'app/**/*.{js,jsx,ts,tsx}',
+    '!app/**/*.d.ts',
+    '!app/api/**/*',
+    '!**/node_modules/**',
+    '!**/*.test.{js,jsx,ts,tsx}'
   ]
 };
