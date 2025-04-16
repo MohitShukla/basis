@@ -10,7 +10,8 @@ module.exports = {
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/app/$1'
+    '^@/(.*)$': '<rootDir>/app/$1',
+    '\\.(css|less|scss|sass)$': '<rootDir>/jest.cssMock.js' // Mock CSS imports
   },
   transformIgnorePatterns: [
     '/node_modules/(?!(@react-oauth|react-icons)/)'

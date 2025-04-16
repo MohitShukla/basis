@@ -1,4 +1,7 @@
-'use client'; // Add this line at the top
+'use client';
+
+// Import React explicitly
+import React from 'react';
 
 // Importing global CSS styles for the application
 import './globals.css';
@@ -19,35 +22,41 @@ const inter = Inter({ subsets: ['latin'] });
 export default function RootLayout({
   children, // The `children` prop represents the content of the page being rendered
 }: {
-  readonly children: React.ReactNode; // Mark the `children` prop as readonly
+  readonly children: React.ReactNode;
 }) {
   const [markdownFile, setMarkdownFile] = useState<string | undefined>(undefined);
 
-  return (
-    <html lang="en">
-      <head>
-        {/* Include Bootstrap CSS */}
-        <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-        />
-      </head>      
-      <body className={inter.className}>
-        {/* Header Section */}
-        <Header />
+  const layoutContent = (
+    <>
+      {/* Header Section */}
+      <Header />
 
-        {/* Main Content Section */}
-        <div className="d-flex" style={{ minHeight: '100vh', alignItems: 'stretch'  }}>
-          <SidePanel onSelect={(file) => setMarkdownFile(file)} /> {/* Left-side navigation panel */}
-          <div className="flex-grow-1 p-4">
-            {markdownFile ? (
-              <MarkdownViewer filePath={markdownFile} />
-            ) : (
-              children
-            )}
-          </div>
+      {/* Main Content Section */}
+      <div className="d-flex" style={{ minHeight: '100vh', alignItems: 'stretch' }}>
+        <SidePanel onSelect={(file) => setMarkdownFile(file)} />
+        <div className="flex-grow-1 p-4">
+          {markdownFile ? <MarkdownViewer filePath={markdownFile} /> : children}
         </div>
-      </body>
-    </html>
+      </div>
+    </>
   );
+
+  // Render <html>, <head>, and <body> only in non-test environments
+  if (process.env.NODE_ENV !== 'test') {
+    return (
+      <html lang="en">
+        <head>
+          {/* Include Bootstrap CSS */}
+          <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+          />
+        </head>
+        <body className={inter.className}>{layoutContent}</body>
+      </html>
+    );
+  }
+
+  // For tests, return only the layout content
+  return layoutContent;
 }
