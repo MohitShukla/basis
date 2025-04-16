@@ -6,8 +6,8 @@ import './globals.css';
 // Importing the Inter font from Google Fonts using Next.js font optimization
 import { Inter } from 'next/font/google';
 
-import Header from './components/Header';
-import SidePanel from './components/SidePanel';
+import Header from './components/Header/Header';
+import SidePanel from './components/SidePanel/SidePanel';
 import MarkdownViewer from './components/MarkdownViewer';
 import { useState } from 'react';
 

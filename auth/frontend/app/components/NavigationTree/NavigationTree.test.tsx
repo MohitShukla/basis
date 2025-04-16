@@ -40,6 +40,27 @@ jest.mock('../../data/navigationMenu.json', () => [
   }
 ]);
 
+// Add this before your tests
+beforeAll(() => {
+  // Save original console.error
+  const originalError = console.error;
+  
+  // Mock console.error
+  console.error = (...args) => {
+    // Filter out the specific error message
+    if (args[0] === 'Error checking markdown file:') {
+      return;
+    }
+    // Pass through other error messages
+    originalError.apply(console, args);
+  };
+});
+
+// Optionally restore original console after all tests
+afterAll(() => {
+  jest.restoreAllMocks();
+});
+
 describe('NavigationTree Component', () => {
   const mockOnSelect = jest.fn();
   
