@@ -1,6 +1,9 @@
 # Next Steps
 
 - ❌ After login, when I change page, GoogleLoginButton on UI changes to loged off
+- npm run dev gives warning  
+  - ⚠ Invalid next.config.js options detected: 
+  - ⚠ Unrecognized key(s) in object: 'swcMinify'
 - 🔴 All unit tests
 - 🔴 Test server and CI/CD to be setup with continuous testing 
 - external links in markdown should open in new tab

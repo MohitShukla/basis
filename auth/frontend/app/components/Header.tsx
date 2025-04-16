@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import GoogleLoginButton from './GoogleLoginButton';
+import GoogleLoginButton from './GoogleLoginButton/GoogleLoginButton';
 
 export default function Header() {
   return (
