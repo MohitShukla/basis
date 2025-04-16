@@ -50,6 +50,7 @@ jobs:
             -Dsonar.organization=mohitshukla
             -Dsonar.projectKey=MohitShukla_basis
             -Dsonar.javascript.lcov.reportPaths=auth/frontend/coverage/lcov.info
+            -Dsonar.coverage.exclusions=**/__mocks__/**,**/babel.config*.js,**/next.config.js, **/**.config.js
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
