@@ -3,13 +3,6 @@ Use only bootstrap. No hardcoded CSS.
 
 # Documentation
 
-## Icons used in documentation
-✅❌🚧🔵
-✅ : Tested OK
-❌ : Failed 
-🚧 : Work in progress
-🔵 : Pull attention
-
 - Each project folder or sub-directory has its own README.md. This is the primary file of that folder.
 - README contains epics/stories implemented in that section   
 - ✅ means this story or task is completed. Where there is a series of tasks, ✅ means that all the tasks mentioned before ✅ are completed. And all that are listed below are yet to do. 

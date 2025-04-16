@@ -1,5 +1,8 @@
 # Next Steps
 
+- ❌ After login, when I change page, GoogleLoginButton on UI changes to loged off
+- 🔴 All unit tests
+- 🔴 Test server and CI/CD to be setup with continuous testing 
 - external links in markdown should open in new tab
 - markdown pages should open with a URL in browser
 - ability to ask questions to GPT
