@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 // Use a default test value or existing value
-const clientId = process.env.NEXT_PUBLIC_GOOGLE_OAUTH_CLIENT_ID || 'test-client-id';
+const clientId = process.env.NEXT_PUBLIC_GOOGLE_OAUTH_CLIENT_ID ?? 'test-client-id';
 
 export default function GoogleLoginButton() {
   const [userName, setUserName] = useState<string | null>(null);

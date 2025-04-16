@@ -1,7 +1,7 @@
 'use client';
 
-// Import React explicitly
-import React from 'react';
+// Import React along with useState
+import React, { useState } from 'react';
 
 // Importing global CSS styles for the application
 import './globals.css';
@@ -12,7 +12,6 @@ import { Inter } from 'next/font/google';
 import Header from './components/Header/Header';
 import SidePanel from './components/SidePanel/SidePanel';
 import MarkdownViewer from './components/MarkdownViewer';
-import { useState } from 'react';
 
 // Configuring the Inter font with Latin subset
 const inter = Inter({ subsets: ['latin'] });
