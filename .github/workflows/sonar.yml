@@ -27,6 +27,7 @@ jobs:
 
       # Step 3: Install dependencies
       - name: Install dependencies
+        working-directory: auth/frontend
         run: npm install
 
       # Step 4: Run tests and generate coverage
