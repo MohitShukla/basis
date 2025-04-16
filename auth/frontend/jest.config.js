@@ -4,17 +4,17 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'], // Recognize these file extensions
   testMatch: ['**/__tests__/**/*.ts?(x)', '**/?(*.)+(spec|test).ts?(x)'],
   transform: {
-    '^.+\\.(ts|tsx)$': ['babel-jest', { configFile: './babel.config.jest.js' }],
-    '^.+\\.jsx?$': ['babel-jest', { configFile: './babel.config.jest.js' }],
+    '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest', // Use Babel to transform JS/TS files
     'node_modules/react-icons/.+\\.js$': ['babel-jest', { configFile: './babel.config.jest.js' }]
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/app/$1',
-    '\\.(css|less|scss|sass)$': '<rootDir>/jest.cssMock.js' // Mock CSS imports
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy', // Mock CSS imports
+    '^react-markdown$': '<rootDir>/__mocks__/react-markdown.jsx'
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!(@react-oauth|react-icons)/)'
+    '/node_modules/(?!react-markdown|vfile|unist-util-[^/]+|remark-[^/]+|micromark-[^/]+|devlop|hast-util-[^/]+)',
   ],
   collectCoverage: true,
   coverageReporters: ['lcov', 'text', 'clover'],
