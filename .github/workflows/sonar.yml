@@ -30,7 +30,8 @@ jobs:
         run: npm install
 
       # Step 4: Run tests and generate coverage
-      - name: Run tests
+      - name: Run Tests with Coverage
+        working-directory: auth/frontend
         run: npm test -- --coverage
 
       # Step 5: Cache SonarCloud packages
