@@ -1,12 +1,10 @@
 # Next Steps
 
-- Sequence by gpt
-  - 🔴 Implement CI/CD using GitHub Actions
-  - 🔴 Configure SonarQube to Show Test Coverage in the Quality Gate
-- 🔴 Test server and CI/CD to be setup with continuous testing 
-- npm run dev gives warning  
+- 🔴 npm run dev gives warning  
   - ⚠ Invalid next.config.js options detected: 
   - ⚠ Unrecognized key(s) in object: 'swcMinify'
+- 🔴 Test server and CI/CD to be setup with continuous testing 
+
 - 🔴 All unit tests
 
 - external links in markdown should open in new tab
