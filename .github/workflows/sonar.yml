@@ -1,4 +1,4 @@
-name: SonarCloud
+name: CI and SonarCloud
 
 on:
   pull_request:
@@ -10,28 +10,49 @@ on:
       - main
 
 jobs:
-  build:
-    name: SonarCloud
+  build-and-analyze:
+    name: Build, Test, and SonarCloud Analysis
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          python-version: 3.13.2
+          node-version: 18
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run tests and generate coverage
+      - name: Run tests
+        run: npm test -- --coverage
+
+      # Step 5: Cache SonarCloud packages
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
+
+      # Step 6: SonarCloud Scan
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: >
             -Dsonar.organization=mohitshukla
             -Dsonar.projectKey=MohitShukla_basis
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Ensure this secret is defined in your repository
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      # Optional: Step 7: Check Quality Gate
+      # Uncomment this step if you want to fail the workflow if the Quality Gate fails
       # - name: Check Quality Gate
       #   run: |
       #     curl -u "${{ secrets.SONAR_TOKEN }}:" "https://sonarcloud.io/api/qualitygates/project_status?projectKey=MohitShukla_basis" > quality_gate.json

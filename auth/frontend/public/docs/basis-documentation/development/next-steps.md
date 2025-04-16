@@ -1,11 +1,14 @@
 # Next Steps
 
-- ❌ After login, when I change page, GoogleLoginButton on UI changes to loged off
+- Sequence by gpt
+  - 🔴 Implement CI/CD using GitHub Actions
+  - 🔴 Configure SonarQube to Show Test Coverage in the Quality Gate
+- 🔴 Test server and CI/CD to be setup with continuous testing 
 - npm run dev gives warning  
   - ⚠ Invalid next.config.js options detected: 
   - ⚠ Unrecognized key(s) in object: 'swcMinify'
 - 🔴 All unit tests
-- 🔴 Test server and CI/CD to be setup with continuous testing 
+
 - external links in markdown should open in new tab
 - markdown pages should open with a URL in browser
 - ability to ask questions to GPT
