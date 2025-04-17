@@ -21,7 +21,7 @@ print_version() {
     echo "✅ $1 version: $2"
 }
 
-
+cd ~/basis/deployment/
 
 # Update package list
 ./note  "Updating package list..." 
@@ -31,7 +31,7 @@ sudo apt update
 ./note "Installing required packages..."
 sudo apt install -y software-properties-common
 
-cd ~/basis/deployment/
+
 ./setup_node.sh
 ./setup_python.sh
 ./setup_nginx.sh
