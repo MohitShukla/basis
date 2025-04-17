@@ -62,4 +62,4 @@ chmod +x /home/ubuntu/basis/activate_python_env.sh
 
 
 source ~/basis/activate_python_env.sh
-./note "Activated the Python environment, " success
+./note "Activated Python environment" success

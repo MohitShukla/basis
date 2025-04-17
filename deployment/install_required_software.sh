@@ -41,11 +41,11 @@ sudo apt install -y software-properties-common
 ./note "✅ All required software has been installed successfully!" success
 
 # Installs Project Dependencies
+./note "InstallProject Dependencies..."
 cd /home/ubuntu/basis/auth/frontend
 npm install
+./note "Installed npm Project Dependencies..." success
 
+./note "Starting basis with pm2"
 # Start the Next.js application
 pm2 start "npm run dev" --name "basis" -- -p 3000
-
-# ❌ : next is runnig on port 3000, but the frontend is not working.
-# ❌ : Module not found: Can't resolve './google_oauth.json'

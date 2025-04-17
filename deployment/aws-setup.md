@@ -6,6 +6,24 @@ This document outlines the AWS infrastructure setup for the Basis project.
 
 ## EC2 Instances
 
+## Setup  EC2 as following
+  Name: basis-prod or basis-test, etc
+  AMI: Ubuntu Server 22.04 LTS. 64-bit (x86)
+  Instance type: t3.small (2 vCPU, 2GB RAM) (not t2 micro free)
+  Key pair: basis-mumbai-prod-key basis-dev-key.pem
+  Network settings: 
+    - VPC: Create new
+    - Subnet: Create new
+    - Security group: Create new
+      - Allow SSH (22)
+      - Allow HTTP (80)
+      - Allow HTTPS (443)
+      - Allow Custom TCP (3000) for Next.js
+      - Allow Custom TCP (8000) for Python backend
+  Root volume: 16 GB gp3
+
+
+
 ### Development Server (basis-dev)
 - **Public IP**: 13.61.2.96
 - **Instance Type**: t2.micro (free tier)
@@ -42,23 +60,24 @@ ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-dev-key.pem" ubuntu@
 ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-prod1-key.pem" ubuntu@51.20.65.120
 ```
 
+> 🔵🔵🔵 (17-April-25) Note: main branch running on produciton server
+
 ## Server Setup
 
 ### Initial Setup
 1. Connect to the server using SSH
-2. ✅ Clone the repository
+2. ✅ Clone the repository, if not already there
 
 ```bash
 # clone basis project
 cd /home/ubuntu
 git clone https://github.com/MohitShukla/basis.git
+cd basis
+git pull origin main
+./deployment/install_required_software.sh  # Run script to install required software
 ```
 
-3. ❌ Run script to install required software:
-   ```bash
-   ./basis/deployment/install_required_software.sh
-   ```
-   See [install_required_software.sh](../deployment/install_required_software.sh) for details of what gets installed.
+See [install_required_software.sh](../deployment/install_required_software.sh) for details of what gets installed.
 
 
 
