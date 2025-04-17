@@ -1,11 +1,8 @@
 # Next Steps
 
-- 🔴 npm run dev gives warning  
-  - ⚠ Invalid next.config.js options detected: 
-  - ⚠ Unrecognized key(s) in object: 'swcMinify'
-- 🔴 Test server and CI/CD to be setup with continuous testing 
+- 🔴 setup prod server 
+- 🔴 Each merge to main should now upgrade the prod server with main.  
 
-- 🔴 All unit tests
 
 - external links in markdown should open in new tab
 - markdown pages should open with a URL in browser

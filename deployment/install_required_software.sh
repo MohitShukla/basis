@@ -33,7 +33,7 @@ sudo apt install -y software-properties-common
 ./setup_node.sh
 ./setup_python.sh
 ./setup_nginx.sh
-./setup_mongodb.sh
+# ./setup_mongodb.sh  # Do not install mongo unless needed. Its slows down EC2 instance.
 ./setup_cloudwatch_agent.sh
 
 echo "✅ All required software has been installed successfully!"
