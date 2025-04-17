@@ -1,13 +1,13 @@
 # Next Steps
 
-- 🔴 Google OAuth requires HTTPS for production applications. Next steps:
+- ✅ Google OAuth requires HTTPS for production applications. Next steps:
   - Set up HTTPS with a proper domain (Best)
      - ✅ eqbasis.com registered
-     - 🚧 configure DNS records
-     - wait for DNS propogaion for few hours
-     - Set up SSL using Let's Encrypt (free)
-     - Configure Nginx as a reverse proxy
-     - Set up HTTPS on EC2 with a self-signed certificate (Temporary)
+     - ✅ configure DNS records
+     - ✅ Set up SSL using Let's Encrypt (free)
+     - ✅ Configure Nginx as a reverse proxy
+     - ✅ Set up HTTPS on EC2 with a self-signed certificate (Temporary)
+- 🔴 DNS is working. But there is a console error on browser on page talk-to-ai on eqbasis.com
 - 🔴 Each merge to main should now upgrade the prod server with main.  
 
 

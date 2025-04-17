@@ -34,7 +34,7 @@ sudo apt install -y software-properties-common
 
 ./setup_node.sh
 ./setup_python.sh
-./setup_nginx.sh
+./setup_nginx.sh eqbasis.com
 # ./setup_mongodb.sh  # Do not install mongo unless needed. Its slows Ec2
 ./setup_cloudwatch_agent.sh
 

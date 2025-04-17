@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -11,6 +11,12 @@ export default function ChatWithAI() {
   const [response, setResponse] = useState('');
   const [model, setModel] = useState('gpt-3.5-turbo');
   const [loading, setLoading] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  // Set isClient to true once component mounts on the client
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,14 +60,24 @@ export default function ChatWithAI() {
     <div className="container">
       <form onSubmit={handleSubmit} className="p-1 ">
         <div className="mb-1">
-          <textarea
-            id="promptInput"
-            className="form-control"
-            rows={4}
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            placeholder="Talk to AI..."
-          ></textarea>
+          {isClient ? (
+            <textarea
+              id="promptInput"
+              className="form-control"
+              rows={4}
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="Talk to AI..."
+            ></textarea>
+          ) : (
+            <textarea
+              id="promptInput"
+              className="form-control"
+              rows={4}
+              defaultValue=""
+              placeholder="Talk to AI..."
+            ></textarea>
+          )}
         </div>
 
         <div className="row mb-1">

@@ -7,5 +7,3 @@ Find a solution for this error. Use the logs, console, and any referenced files 
 Following is the error content from console...
 
 
-basisai.ai
-eqbasis
