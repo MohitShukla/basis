@@ -21,22 +21,24 @@ print_version() {
     echo "✅ $1 version: $2"
 }
 
+
+
 # Update package list
-echo "Updating package list..."
+./note  "Updating package list..." 
 sudo apt update
 
 # Install required packages
-echo "Installing required packages..."
+./note "Installing required packages..."
 sudo apt install -y software-properties-common
 
-
+cd ~/basis/deployment/
 ./setup_node.sh
 ./setup_python.sh
 ./setup_nginx.sh
-# ./setup_mongodb.sh  # Do not install mongo unless needed. Its slows down EC2 instance.
+# ./setup_mongodb.sh  # Do not install mongo unless needed. Its slows Ec2
 ./setup_cloudwatch_agent.sh
 
-echo "✅ All required software has been installed successfully!"
+./note "✅ All required software has been installed successfully!" success
 
 # Installs Project Dependencies
 cd /home/ubuntu/basis/auth/frontend

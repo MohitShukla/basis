@@ -20,36 +20,36 @@ set -e  # Exit immediately if a command exits with a non-zero status
 
 # Function to print status messages
 print_status() {
-    echo "✅ $1"
+    ./note "✅ $1"
 }
 
 # ---------------
 # CloudWatch Agent Installation
 # ---------------
-echo "Installing CloudWatch agent..."
+./note "Installing CloudWatch agent..."
 
 # Download the CloudWatch agent package
-echo "Downloading CloudWatch agent package..."
+./note "Downloading CloudWatch agent package..."
 wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
 
 # Install the package
-echo "Installing CloudWatch agent package..."
+./note "Installing CloudWatch agent package..."
 sudo dpkg -i -E ./amazon-cloudwatch-agent.deb
 
 # Clean up
-echo "Cleaning up downloaded package..."
+./note "Cleaning up downloaded package..."
 rm amazon-cloudwatch-agent.deb
 
 # ---------------
 # CloudWatch Agent Configuration
 # ---------------
-echo "Creating CloudWatch configuration..."
+./note "Creating CloudWatch configuration..."
 
 # Create configuration directory if it doesn't exist
 sudo mkdir -p /opt/aws/amazon-cloudwatch-agent/etc/
 
 # Create the configuration file
-echo "Setting up monitoring configuration..."
+./note "Setting up monitoring configuration..."
 sudo tee /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json > /dev/null << EOF
 {
     "agent": {
@@ -116,7 +116,7 @@ EOF
 # ---------------
 # Start and Enable CloudWatch Agent
 # ---------------
-echo "Starting CloudWatch agent with configuration..."
+./note "Starting CloudWatch agent with configuration..."
 
 # Start CloudWatch agent with the configuration file
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
@@ -131,9 +131,9 @@ sudo systemctl enable amazon-cloudwatch-agent
 if systemctl is-active --quiet amazon-cloudwatch-agent; then
     print_status "CloudWatch agent is running"
 else
-    echo "❌ CloudWatch agent failed to start. Check logs with: sudo systemctl status amazon-cloudwatch-agent"
+    ./note "❌ CloudWatch agent failed to start. Check logs with: sudo systemctl status amazon-cloudwatch-agent" error
     exit 1
 fi
 
-echo "✅ CloudWatch agent setup completed successfully!"
-echo "You can view your metrics and logs in the AWS CloudWatch console."
+./note "✅ CloudWatch agent setup completed successfully!"
+./note "You can view your metrics and logs in the AWS CloudWatch console."

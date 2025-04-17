@@ -19,23 +19,23 @@ set -e  # Exit immediately if a command exits with a non-zero status
 
 # Function to print version information
 print_version() {
-    echo "✅ $1 version: $2"
+    ./note "✅ $1 version: $2"
 }
 
 # ---------------
 # Nginx
 # ---------------
 # ✅ Install Nginx
-echo "Installing Nginx..."
+./note "Installing Nginx..."
 sudo apt install -y nginx
 print_version "Nginx" "$(nginx -v 2>&1)"
 
 # Start Nginx service
-echo "Starting Nginx service..."
+./note "Starting Nginx service..."
 sudo systemctl start nginx
 
 # Enable Nginx to start on boot
-echo "Enabling Nginx to start on boot..."
+./note "Enabling Nginx to start on boot..."
 sudo systemctl enable nginx
 
 # Verify Nginx is running
@@ -46,10 +46,10 @@ else
     exit 1
 fi
 
-echo "✅ Nginx setup completed successfully!"
+./note "✅ Nginx setup completed successfully!"
 
 # Get the server's public IP address
-echo "Detecting server IP address..."
+./note "Detecting server IP address..."
 SERVER_IP=$(curl -s ifconfig.me)
 
 if [ -z "$SERVER_IP" ]; then
@@ -57,15 +57,15 @@ if [ -z "$SERVER_IP" ]; then
     exit 1
 fi
 
-echo "Server IP detected: ${SERVER_IP}"
+./note "Server IP detected: ${SERVER_IP}"
 
 # Create necessary directories
-echo "Creating Nginx configuration directories..."
+./note "Creating Nginx configuration directories..."
 sudo mkdir -p /etc/nginx/sites-available
 sudo mkdir -p /etc/nginx/sites-enabled
 
 # Create frontend configuration
-echo "Creating frontend configuration..."
+./note "Creating frontend configuration..."
 sudo tee /etc/nginx/sites-available/frontend > /dev/null << EOF
 server {
     listen 80;
@@ -83,7 +83,7 @@ server {
 EOF
 
 # Create backend configuration
-echo "Creating backend configuration..."
+./note "Creating backend configuration..."
 sudo tee /etc/nginx/sites-available/backend > /dev/null << EOF
 server {
     listen 80;
@@ -101,7 +101,7 @@ server {
 EOF
 
 # Enable configurations
-echo "Enabling Nginx configurations..."
+./note "Enabling Nginx configurations..."
 sudo ln -sf /etc/nginx/sites-available/frontend /etc/nginx/sites-enabled/
 sudo ln -sf /etc/nginx/sites-available/backend /etc/nginx/sites-enabled/
 
@@ -111,18 +111,18 @@ if [ -f /etc/nginx/sites-enabled/default ]; then
 fi
 
 # Test Nginx configuration
-echo "Testing Nginx configuration..."
+./note "Testing Nginx configuration..."
 sudo nginx -t
 
 # If test is successful, restart Nginx
 if [ $? -eq 0 ]; then
-    echo "Nginx configuration test successful. Restarting Nginx..."
+    ./note "Nginx configuration test successful. Restarting Nginx..." success
     sudo systemctl restart nginx
 else
-    echo "Nginx configuration test failed. Please check the configuration."
+    ./note "Nginx configuration test failed. Please check the configuration." error
     exit 1
 fi
 
-echo "✅ Nginx configuration completed!"
-echo "Frontend URL: http://${SERVER_IP}"
-echo "Backend URL: http://${SERVER_IP}/api" 
+./note "✅ Nginx configuration completed!" success
+./note "Frontend URL: http://${SERVER_IP}" success
+./note "Backend URL: http://${SERVER_IP}/api" success

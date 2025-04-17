@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Function to print messages with different colors based on log level
+log_message() {
+    local message="$1"
+    local log_level="${2:-TRACE}"
+
+    # Define color codes
+    local RESET="\033[0m"
+    local TRACE_COLOR="\033[34m"    # Blue
+    local DEBUG_COLOR="\033[36m"    # Cyan
+    local INFO_COLOR="\033[32m"     # Green
+    local SUCCESS_COLOR="\033[92m"  # Light Green
+    local WARNING_COLOR="\033[33m"  # Yellow
+    local ERROR_COLOR="\033[31m"    # Red
+    local CRITICAL_COLOR="\033[41m" # Red Background
+    local TITLE_COLOR="\033[35m"    # Magenta
+
+    # Convert log level to uppercase
+    log_level=$(echo "$log_level" | tr '[:lower:]' '[:upper:]')
+
+    # Determine the color based on log level
+    case "$log_level" in
+        TRACE) color="$TRACE_COLOR" ;;
+        DEBUG) color="$DEBUG_COLOR" ;;
+        INFO) color="$INFO_COLOR" ;;
+        SUCCESS) color="$SUCCESS_COLOR" ;;
+        WARNING) color="$WARNING_COLOR" ;;
+        ERROR) color="$ERROR_COLOR" ;;
+        CRITICAL) color="$CRITICAL_COLOR" ;;
+        TITLE) color="$TITLE_COLOR" ;;
+        *) color="$RESET" ;; # Default to no color
+    esac
+
+    # Print the message with the selected color
+    echo -e "${color}${log_level}: ${message}${RESET}"
+}
+
+# Example usage
+log_message "$1" "$2"

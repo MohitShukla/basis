@@ -27,15 +27,15 @@ print_version() {
 # Python
 # ---------------
 # ✅ Install Python 3.12
-echo "Installing Python 3.12..."
+./note "Installing Python 3.12..."
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt update
 sudo apt install -y python3.12 python3.12-venv python3.12-dev
 print_version "Python" "$(python3.12 --version)"
 
 # ✅ Install pip for Python 3.12
-echo "Installing pip for Python 3.12..."
+./note "Installing pip for Python 3.12..."
 curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12
 print_version "pip" "$(pip3.12 --version)"
 
-echo "✅ Python setup completed successfully!" 
+./note "✅ Python setup completed successfully!" sucess

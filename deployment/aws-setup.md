@@ -39,7 +39,7 @@ ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-dev-key.pem" ubuntu@
 
 ### Production Server
 ```bash
-ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-prod-key.pem" ubuntu@51.20.32.201
+ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-prod1-key.pem" ubuntu@51.20.65.120
 ```
 
 ## Server Setup
@@ -56,7 +56,7 @@ git clone https://github.com/MohitShukla/basis.git
 
 3. ❌ Run script to install required software:
    ```bash
-   /home/ubuntu/install_required_software.sh
+   ./basis/deployment/install_required_software.sh
    ```
    See [install_required_software.sh](../deployment/install_required_software.sh) for details of what gets installed.
 

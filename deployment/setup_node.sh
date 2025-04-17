@@ -20,27 +20,27 @@ set -e  # Exit immediately if a command exits with a non-zero status
 
 # Function to print version information
 print_version() {
-    echo "✅ $1 version: $2"
+    ./note "✅ $1 version: $2"
 }
 
 # ---------------
 # Node.js
 # ---------------
 # ✅ Install Node.js (latest LTS)
-echo "Installing Node.js (latest LTS)..."
+./note "Installing Node.js (latest LTS)..."
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt install -y nodejs
 print_version "Node.js" "$(node --version)"
 print_version "npm" "$(npm --version)"
 
 # ✅ Update npm (Node Package Manager) to latest version
-echo "Updating npm to latest version..."
+./note "Updating npm to latest version..."
 sudo npm install -g npm@latest
 print_version "npm (updated)" "$(npm --version)"
 
 # ✅ Install PM2 (Process Manager 2) globally (latest version)
-echo "Installing PM2 (latest version)..."
+./note "Installing PM2 (latest version)..."
 sudo npm install -g pm2@latest
 print_version "PM2" "$(pm2 --version)"
 
-echo "✅ Node.js setup completed successfully!" 
+./note "✅ Node.js setup completed successfully!" sucess
