@@ -44,8 +44,10 @@ sudo apt install -y software-properties-common
 ./note "InstallProject Dependencies..."
 cd /home/ubuntu/basis/auth/frontend
 npm install
+cd ~/basis/deployment
 ./note "Installed npm Project Dependencies..." success
 
 ./note "Starting basis with pm2"
 # Start the Next.js application
+cd ~/basis/auth/frontend/
 pm2 start "npm run dev" --name "basis" -- -p 3000

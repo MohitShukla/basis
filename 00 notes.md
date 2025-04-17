@@ -5,3 +5,7 @@ Always give me solutions as per the best practices specified for the language an
 Find a solution for this error. Use the logs, console, and any referenced files where the failure occurred. 
 
 Following is the error content from console...
+
+
+basisai.ai
+eqbasis

@@ -22,42 +22,14 @@ This document outlines the AWS infrastructure setup for the Basis project.
       - Allow Custom TCP (8000) for Python backend
   Root volume: 16 GB gp3
 
-
-
-### Development Server (basis-dev)
-- **Public IP**: 13.61.2.96
-- **Instance Type**: t2.micro (free tier)
-- **AMI**: Ubuntu Server 22.04 LTS
-- **Key Pair**: basis-dev-key.pem
-- **Security Group Rules**:
-  - SSH (22)
-  - HTTP (80)
-  - HTTPS (443)
-  - Custom TCP (3000) - Next.js
-  - Custom TCP (8000) - Python backend
-
-### Production Server (basis-prod)
-- **Public IP**: 51.20.32.201
-- **Instance Type**: t2.small
-- **AMI**: Ubuntu Server 22.04 LTS
-- **Key Pair**: basis-prod-key.pem
-- **Security Group Rules**:
-  - SSH (22)
-  - HTTP (80)
-  - HTTPS (443)
-  - Custom TCP (3000) - Next.js
-  - Custom TCP (8000) - Python backend
+## Change permission of pen file
+```chmod 400 /Users/mohit.shukla/development/aws_pem_files/basis-mumbai-prod-key.pem```
 
 ## SSH Access
 
-### Development Server
-```bash
-ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-dev-key.pem" ubuntu@13.61.2.96
-```
-
 ### Production Server
 ```bash
-ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-prod1-key.pem" ubuntu@51.20.65.120
+ssh -v -i "/Users/mohit.shukla/development/aws_pem_files/basis-mumbai-prod-key.pem" ubuntu@13.203.156.69
 ```
 
 > 🔵🔵🔵 (17-April-25) Note: main branch running on produciton server
@@ -79,9 +51,12 @@ git pull origin main
 
 See [install_required_software.sh](../deployment/install_required_software.sh) for details of what gets installed.
 
-
-
-
+## Configure .env
+```bash
+cd ~/basis/auth/frontend
+cp .env_example.sh .env
+```
+Add all missing values in .env
 
 
 ## Backup Strategy

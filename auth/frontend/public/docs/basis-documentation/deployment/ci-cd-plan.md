@@ -37,20 +37,7 @@ ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-dev-key.pem" ubuntu@
 ssh -i "/Users/mohit.shukla/development/aws_pem_files/basis-prod1-key.pem" ubuntu@16.171.2.238
 ```
 
-## Test Server Details
-  Name: basis-dev
-  AMI: Ubuntu Server 22.04 LTS
-  Instance type: t3.micro (free tier)
-  Key pair: basis-dev-key.pem
-  Network settings: 
-    - VPC: Create new
-    - Subnet: Create new
-    - Security group: Create new
-      - Allow SSH (22)
-      - Allow HTTP (80)
-      - Allow HTTPS (443)
-      - Allow Custom TCP (3000) for Next.js
-      - Allow Custom TCP (8000) for Python backend
+
 
 
 ## Install the necessary software on the basis server

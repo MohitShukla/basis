@@ -20,7 +20,7 @@ set -e  # Exit immediately if a command exits with a non-zero status
 
 # Function to print version information
 print_version() {
-    echo "✅ $1 version: $2"
+    ./note "✅ $1 version: $2"
 }
 
 # ---------------
