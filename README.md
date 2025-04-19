@@ -2,6 +2,7 @@ Here are several high-potential AI tool ideas you can develop into an online Saa
 
 ## basis apps
 All these can appear as apps on basis
+
 ⸻
 
 1. **AI Resume & Cover Letter Generator for India & Global Markets**
