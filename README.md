@@ -2,7 +2,7 @@ Here are several high-potential AI tool ideas you can develop into an online Saa
 
 ⸻
 
-1. AI Resume & Cover Letter Generator for India & Global Markets
+1. **AI Resume & Cover Letter Generator for India & Global Markets**
 	•	Tailored for roles, companies, and ATS optimization
 	•	Upload job links or JD PDFs, get custom resume suggestions
 	•	Pricing: Freemium with paid pro templates & PDF export
