@@ -1,8 +1,7 @@
 # Next Steps
 
 
-- 🔴 Each merge to main should now upgrade the prod server with main.  
-- markdown pages should open with a URL in browser
+ - markdown pages should open with a URL in browser
 
 - external links in markdown should open in new tab
 - storage of notes in mongodb (or vector db)

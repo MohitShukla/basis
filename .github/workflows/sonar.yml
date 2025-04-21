@@ -1,4 +1,4 @@
-name: CI and SonarCloud
+name: Automatically Test and Check Q-Gates
 
 on:
   pull_request:
