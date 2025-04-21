@@ -1,20 +1,11 @@
 # Next Steps
 
-- ✅ Google OAuth requires HTTPS for production applications. Next steps:
-  - Set up HTTPS with a proper domain (Best)
-     - ✅ eqbasis.com registered
-     - ✅ configure DNS records
-     - ✅ Set up SSL using Let's Encrypt (free)
-     - ✅ Configure Nginx as a reverse proxy
-     - ✅ Set up HTTPS on EC2 with a self-signed certificate (Temporary)
-- 🔴 DNS is working. But there is a console error on browser on page talk-to-ai on eqbasis.com
-- 🔴 Each merge to main should now upgrade the prod server with main.  
 
+- 🔴 Each merge to main should now upgrade the prod server with main.  
+- markdown pages should open with a URL in browser
 
 - external links in markdown should open in new tab
-- markdown pages should open with a URL in browser
-- ability to ask questions to GPT
-- storage of notes in mongodb
+- storage of notes in mongodb (or vector db)
 - ability to ask questions on all stored notes  
 
 # Plan (Component by Component):
@@ -22,22 +13,38 @@
 1. **Phase 1: Core Infrastructure**
    - ✅ Set up basic project structure
    - ✅ Implement authentication system
-   -  Create basic database schema 
-   - Set up CI/CD pipeline
-      - ❌ EC2 too slow. Will try again tomorrow. 
+   - Create basic database schema 
+   - ✅ Set up CI/CD pipeline
    - **This gives us a solid foundation**
 
 2. **Phase 2: Basic Content Management**
    - Basic content posting (text only)
-   - Basic UI/UX
+   - ✅ Basic UI/UX
 
 3. **Phase 3: AI Integration**
-   - Set up OpenAI integration
-   - Implement basic question answering
+   - ✅ Set up OpenAI integration
+   - ✅ Implement basic question answering
    - **This adds the AI layer**
    - **This gives us a working MVP**  
 
-4. **Phase 4: Advanced Features**
+1. **Phase 4: Advanced Features**
+   - User record in db
+   - User paymennts
+      - as a user uses, his wallet goes into debt
+      - user pay real money to me (initilly need not be online) to credit into his wallet
+      - user can take some actions to credit money into his wallet (like use system, do quizes, etc) 
+   - collect all info about users in the vector db
+   - leanring module
+      - Enter topic, goal, current user expertise and start the quiz
+      - each right answer -> get points and more difficult question  
+      - each wrong answer -> lose points, get explaination and then easier question
+   - hiring module
+      - as an HR I should be able to add JDs
+      - CV should be assessed based on JD. Each cv gets added into db (vector db?)
+      - written test and interview quiz to assess the candidate
+
+
+
    - Implement group creation and management
    - Simple file upload   
    - Add document embedding
@@ -46,51 +53,6 @@
    - Enhanced AI capabilities
    - This polishes the product
 
-# First Steps:
-
-1. **Start with Authentication**
-   ```python
-   # Example structure for auth component
-   /auth
-     /frontend
-       - Login
-       - OAuth integration with Google
-       - log off
-     /backend
-       - User model
-       - Auth endpoints
-       - JWT handling
-     /tests
-       - Auth tests
-   ```
-
-2. **Then Basic Group Management**
-   ```python
-   # Example structure for groups component
-   /groups
-     /frontend
-       - Group creation
-       - Member management
-     /backend
-       - Group model
-       - Group endpoints
-     /tests
-       - Group tests
-   ```
-
-3. **Then Content Management**
-   ```python
-   # Example structure for content component
-   /content
-     /frontend
-       - Content posting
-       - Content viewing
-     /backend
-       - Content model
-       - Content endpoints
-     /tests
-       - Content tests
-   ```
 
 # Development Process for Each Component:
 

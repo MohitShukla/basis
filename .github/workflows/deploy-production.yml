@@ -1,0 +1,70 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  quality-gate-check:
+    name: Check Quality Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install jq
+        run: sudo apt-get install -y jq
+        
+      - name: Check Quality Gate on SonarCloud
+        run: |
+          echo "Checking quality gate for MohitShukla_basis..."
+          sleep 30  # Give SonarCloud time to process the latest push
+          curl -u "${{ secrets.SONAR_TOKEN }}:" "https://sonarcloud.io/api/qualitygates/project_status?projectKey=MohitShukla_basis" > quality_gate.json
+          STATUS=$(jq -r '.projectStatus.status' quality_gate.json)
+          echo "Quality Gate status: $STATUS"
+          if [ "$STATUS" != "OK" ]; then
+            echo "Quality Gate failed! Deployment aborted."
+            exit 1
+          fi
+          echo "Quality Gate passed! Proceeding with deployment."
+
+  deploy-production:
+    name: Deploy to Production Server
+    needs: quality-gate-check  # Only run if quality gate check passes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Setup SSH key
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.PRODUCTION_SSH_KEY }}
+          
+      - name: Add server to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 13.203.238.18 >> ~/.ssh/known_hosts
+          
+      - name: Deploy to production server
+        run: |
+          ssh ubuntu@13.203.238.18 <<EOF
+            # Update the code
+            cd ~/basis
+            git fetch
+            git checkout main
+            git pull origin main
+            
+            # Install dependencies if needed
+            cd auth/frontend
+            npm ci
+            
+            # Build the application
+            npm run build
+            
+            # Restart the PM2 process
+            pm2 restart basis || pm2 start "npm run start" --name "basis"
+            
+            # Save PM2 process list
+            pm2 save
+            
+            echo "Deployment completed successfully!"
+          EOF

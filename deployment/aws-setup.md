@@ -29,8 +29,10 @@ This document outlines the AWS infrastructure setup for the Basis project.
 
 ### Production Server
 ```bash
-ssh -v -i "/Users/mohit.shukla/development/aws_pem_files/basis-mumbai-prod-key.pem" ubuntu@13.203.156.69
+ssh -v -i "/Users/mohit.shukla/development/aws_pem_files/basis-mumbai-prod-key.pem" ubuntu@13.203.238.18
 ```
+
+new elastic IP: 13.203.238.18
 
 > 🔵🔵🔵 (17-April-25) Note: main branch running on produciton server
 
@@ -57,6 +59,11 @@ cd ~/basis/auth/frontend
 cp .env_example.sh .env
 ```
 Add all missing values in .env
+
+
+## Elastic IP for The Server
+Go to EC2 > Elastic IPs
+Allocte a new IP > Associate Elastic IP address
 
 
 ## Backup Strategy
