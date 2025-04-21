@@ -1,6 +1,6 @@
 # Basis
 
-> Basis a software framework that lets you **publish your documentation** or an online book. 
+> Basis a software framework that lets ask questions to AI and **publish your documentation** or an online book. 
 
 ## What can you do with Basis?
 - You can download Basis and use it free. Basis is open source
