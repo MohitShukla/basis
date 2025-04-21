@@ -33,14 +33,7 @@
       - user pay real money to me (initilly need not be online) to credit into his wallet
       - user can take some actions to credit money into his wallet (like use system, do quizes, etc) 
    - collect all info about users in the vector db
-   - leanring module
-      - Enter topic, goal, current user expertise and start the quiz
-      - each right answer -> get points and more difficult question  
-      - each wrong answer -> lose points, get explaination and then easier question
-   - hiring module
-      - as an HR I should be able to add JDs
-      - CV should be assessed based on JD. Each cv gets added into db (vector db?)
-      - written test and interview quiz to assess the candidate
+
 
 
 
