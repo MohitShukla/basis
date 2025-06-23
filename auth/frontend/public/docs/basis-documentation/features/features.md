@@ -8,6 +8,9 @@ Explore a variety of apps available on Basis:
 
 ---
 
+### Self Learning
+As a user I shuld be able to define what skill I want to learn and start the training. My AI trainer should interview me with a few questions, which I will answer. The AI trainer should assess my current level of unnderstadning as per my questions. The current level of inderstanding should be dislplayed as a quantitative rating as well as a qualitative description of strengths and weeknesses of the user.  
+
 ### 1. Doctor Patient Notes
 As a doctor I can enter my patients data and when I save it it automatically sends digital prescriptions to them. 
 
